@@ -1,5 +1,4 @@
-archetype
-    openEHR-EHR-CLUSTER.contact.v1.0.0
+archetype (adl_version=1.4; uid=12345678-1234-1234-1234-123456789abc)    openEHR-EHR-CLUSTER.contact.v1.0.0
 
 concept
     [at0000] -- Contact
