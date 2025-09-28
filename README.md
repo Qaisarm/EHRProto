@@ -34,3 +34,5 @@ The patient registration template includes the following archetypes:
 These archetypes are created in **ADL 1.4** format for maximum compatibility with OpenEHR tools and systems.
 
 All archetypes have been updated to use proper ADL 1.4 syntax and should now parse correctly in OpenEHR tools.
+
+**All archetypes now use the correct ADL 1.4 format with proper UID headers and should parse correctly in OpenEHR tools.**
