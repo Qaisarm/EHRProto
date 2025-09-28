@@ -1,4 +1,4 @@
-archetype (adl_version=2.0.6; rm_release=1.0.4)
+archetype (adl_version=1.4)
     openEHR-EHR-CLUSTER.contact.v1.0.0
 
 concept
