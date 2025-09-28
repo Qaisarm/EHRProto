@@ -1,4 +1,4 @@
-archetype (adl_version=1.4)
+archetype
     openEHR-EHR-CLUSTER.patient_identification.v1.0.0
 
 concept

@@ -1,4 +1,4 @@
-archetype (adl_version=1.4)
+archetype
     openEHR-EHR-CLUSTER.address.v1.0.0
 
 concept
