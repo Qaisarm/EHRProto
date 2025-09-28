@@ -1,119 +1,137 @@
-archetype (adl_version=1.4; uid=12345678-1234-1234-1234-123456789abc)    openEHR-EHR-CLUSTER.patient_identification.v1.0.0
+archetype (adl_version=1.4; uid=12345678-1234-1234-1234-123456789abc)
+	openEHR-EHR-CLUSTER.patient_identification.v1
 
 concept
-    [at0000] -- Patient identification
+	[at0000] -- Patient identification
+
+language
+	original_language = <[ISO_639-1::en]>
 
 description
-    language
-        original_language = <[ISO_639-1::en]>
-    description = <"Identification information for a patient including medical record numbers, insurance details, and other identifiers">
-    governance
-        copyright = <"© openEHR Foundation">
-        licence = <"Apache 2.0">
-    lifecycle_state = <"initial">
+	original_author = <
+		["name"] = <"OpenEHR Foundation">
+		["organisation"] = <"OpenEHR Foundation">
+		["email"] = <"info@openehr.org">
+		["date"] = <"2025-09-28">
+	>
+	lifecycle_state = <"initial">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Patient identification information for healthcare systems">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["build_uid"] = <"12345678-1234-1234-1234-123456789abc">
+	>
 
 definition
-    CLUSTER[at0000] matches {
-        items cardinality matches {1..*; unordered} matches {
-            ELEMENT[at0001] occurrences matches {0..1} matches { -- Medical record number
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0002] occurrences matches {0..1} matches { -- National patient identifier
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0003] occurrences matches {0..1} matches { -- Insurance number
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0004] occurrences matches {0..1} matches { -- Insurance provider
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0005] occurrences matches {0..1} matches { -- Social security number
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0006] occurrences matches {0..1} matches { -- Driver's license number
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0007] occurrences matches {0..1} matches { -- Passport number
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0008] occurrences matches {0..1} matches { -- Emergency contact name
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0009] occurrences matches {0..1} matches { -- Emergency contact phone
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-            ELEMENT[at0010] occurrences matches {0..1} matches { -- Emergency contact relationship
-                value matches {
-                    DV_TEXT matches {*}
-                }
-            }
-        }
-    }
+	CLUSTER[at0000] matches {
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches { -- Medical record number
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches { -- National patient identifier
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..1} matches { -- Insurance number
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches { -- Insurance provider
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0005] occurrences matches {0..1} matches { -- Social security number
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches { -- Driver's license number
+value matches {
+DV_TEXT matches {*}
+}
+}
+ELEMENT[at0007] occurrences matches {0..1} matches { -- Passport number
+value matches {
+DV_TEXT matches {*}
+}
+}
+ELEMENT[at0008] occurrences matches {0..1} matches { -- Emergency contact name
+value matches {
+DV_TEXT matches {*}
+}
+}
+ELEMENT[at0009] occurrences matches {0..1} matches { -- Emergency contact phone
+value matches {
+DV_TEXT matches {*}
+}
+}
+ELEMENT[at0010] occurrences matches {0..1} matches { -- Emergency contact relationship
+value matches {
+DV_TEXT matches {*}
+}
+}
+}
+}
 
 ontology
-    term_definitions = <
-        ["en"] = <
-            [at0000] = <
-                text = <"Patient identification">
-                description = <"Patient identification information">
-            >
-            [at0001] = <
-                text = <"Medical record number">
-                description = <"Internal medical record number">
-            >
-            [at0002] = <
-                text = <"National patient identifier">
-                description = <"National or government patient identifier">
-            >
-            [at0003] = <
-                text = <"Insurance number">
-                description = <"Health insurance policy number">
-            >
-            [at0004] = <
-                text = <"Insurance provider">
-                description = <"Name of insurance provider">
-            >
-            [at0005] = <
-                text = <"Social security number">
-                description = <"Social security or national insurance number">
-            >
-            [at0006] = <
-                text = <"Driver's license number">
-                description = <"Driver's license number">
-            >
-            [at0007] = <
-                text = <"Passport number">
-                description = <"Passport number">
-            >
-            [at0008] = <
-                text = <"Emergency contact name">
-                description = <"Name of emergency contact person">
-            >
-            [at0009] = <
-                text = <"Emergency contact phone">
-                description = <"Phone number of emergency contact">
-            >
-            [at0010] = <
-                text = <"Emergency contact relationship">
-                description = <"Relationship to emergency contact">
-            >
-        >
-    >
+term_definitions = <
+["en"] = <
+[at0000] = <
+text = <"Patient identification">
+description = <"Patient identification information">
+>
+[at0001] = <
+text = <"Medical record number">
+description = <"Internal medical record number">
+>
+[at0002] = <
+text = <"National patient identifier">
+description = <"National or government patient identifier">
+>
+[at0003] = <
+text = <"Insurance number">
+description = <"Health insurance policy number">
+>
+[at0004] = <
+text = <"Insurance provider">
+description = <"Name of insurance provider">
+>
+[at0005] = <
+text = <"Social security number">
+description = <"Social security or national insurance number">
+>
+[at0006] = <
+text = <"Driver's license number">
+description = <"Driver's license number">
+>
+[at0007] = <
+text = <"Passport number">
+description = <"Passport number">
+>
+[at0008] = <
+text = <"Emergency contact name">
+description = <"Name of emergency contact person">
+>
+[at0009] = <
+text = <"Emergency contact phone">
+description = <"Phone number of emergency contact">
+>
+[at0010] = <
+text = <"Emergency contact relationship">
+description = <"Relationship to emergency contact">
+>
+>
+>

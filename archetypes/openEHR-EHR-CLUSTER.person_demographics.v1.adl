@@ -1,5 +1,5 @@
 archetype (adl_version=1.4; uid=12345678-1234-1234-1234-123456789abc)
-	openEHR-EHR-CLUSTER.person_demographics.v1
+	openEHR-EHR-CLUSTER.person_demographics.v1.v1
 
 concept
 	[at0000]
