@@ -28,3 +28,8 @@ The patient registration template includes the following archetypes:
 - [OpenEHR Clinical Knowledge Manager](https://ckm.openehr.org/)
 - [OpenEHR Archetype Designer](https://tools.openehr.org/)
 - [OpenEHR Specifications](https://specifications.openehr.org/)
+
+## ADL Format Compatibility
+
+These archetypes are created in **ADL 1.4** format for maximum compatibility with OpenEHR tools and systems.
+
