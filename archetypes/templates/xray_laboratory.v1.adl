@@ -1,4 +1,4 @@
-archetype (adl_version=1.4; uid=8a4b5c6d-e7f8-4a9b-a1b2-c3d4e5f67890)
+archetype (adl_version=1.4; uid=8a4b5c6d-e7f8-4g9h-a1b2-c3d4e5f67890)
     openEHR-EHR-COMPOSITION.xray_laboratory.v1
 
 concept
@@ -34,7 +34,7 @@ definition
         context matches {
             EVENT_CONTEXT matches {
                 other_context matches {
-                    ITEM_TREE[at0100] matches {
+                    ITEM_TREE matches {
                         items cardinality matches {0..*; unordered} matches {
                             ELEMENT[at0001] matches {    -- Laboratory ID
                                 value matches {
@@ -226,7 +226,11 @@ definition
                     }
                     ELEMENT[at0045] matches {    -- Area Monitoring Results
                         value matches {
-                            DV_QUANTITY matches {*}
+                            DV_QUANTITY matches {
+                                magnitude matches {|0.0..1000.0|}
+                                property matches {[openehr::131]}
+                                units matches {"mSv/h", "µSv/h"}
+                            }
                         }
                     }
                     ELEMENT[at0046] matches {    -- Safety Training Completed
@@ -279,7 +283,11 @@ definition
                             }
                             ELEMENT[at0058] matches {    -- Radiation Dose
                                 value matches {
-                                    DV_QUANTITY matches {*}
+                                    DV_QUANTITY matches {
+                                        magnitude matches {|0.0..100.0|}
+                                        property matches {[openehr::131]}
+                                        units matches {"mGy", "Gy"}
+                                    }
                                 }
                             }
                             ELEMENT[at0059] matches {    -- Contrast Used
@@ -364,7 +372,11 @@ definition
                     }
                     ELEMENT[at0082] matches {    -- Equipment Utilization Rate
                         value matches {
-                            DV_QUANTITY matches {*}
+                            DV_QUANTITY matches {
+                                magnitude matches {|0.0..100.0|}
+                                property matches {[openehr::129]}
+                                units matches {"%"}
+                            }
                         }
                     }
                     ELEMENT[at0083] matches {    -- Average Study Duration
@@ -393,7 +405,11 @@ definition
                     }
                     ELEMENT[at0087] matches {    -- Repeat Rate
                         value matches {
-                            DV_QUANTITY matches {*}
+                            DV_QUANTITY matches {
+                                magnitude matches {|0.0..50.0|}
+                                property matches {[openehr::129]}
+                                units matches {"%"}
+                            }
                         }
                     }
                     ELEMENT[at0088] matches {    -- Operational Issues
@@ -495,10 +511,6 @@ ontology
                 ["at0003"] = <
                     text = <"Report Date/Time">
                     description = <"Date and time of report generation">
-                >
-                ["at0100"] = <
-                    text = <"Tree">
-                    description = <"@ internal @">
                 >
                 ["at0010"] = <
                     text = <"Laboratory Information">
