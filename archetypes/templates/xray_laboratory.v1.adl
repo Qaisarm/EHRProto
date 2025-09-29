@@ -43,15 +43,7 @@ definition
                             }
                             ELEMENT[at0002] matches {    -- Report Type
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0002.1];    -- Daily Operations
-                                            [at0002.2];    -- Quality Control
-                                            [at0002.3];    -- Equipment Maintenance
-                                            [at0002.4];    -- Test Results
-                                            [at0002.5]     -- Incident Report
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0003] matches {    -- Report Date/Time
@@ -81,14 +73,7 @@ definition
                     }
                     ELEMENT[at0013] matches {    -- Accreditation Status
                         value matches {
-                            DV_CODED_TEXT matches {
-                                defining_code matches {
-                                    [at0013.1];    -- Accredited
-                                    [at0013.2];    -- Provisional
-                                    [at0013.3];    -- Not Accredited
-                                    [at0013.4]     -- Under Review
-                                }
-                            }
+                            DV_CODED_TEXT matches {*}
                         }
                     }
                     ELEMENT[at0014] matches {    -- Accreditation Body
@@ -126,17 +111,7 @@ definition
                         items cardinality matches {1..*; unordered} matches {
                             ELEMENT[at0022] matches {    -- Equipment Type
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0022.1];    -- Radiography System
-                                            [at0022.2];    -- Fluoroscopy System
-                                            [at0022.3];    -- CT Scanner
-                                            [at0022.4];    -- Mammography Unit
-                                            [at0022.5];    -- Dental X-ray
-                                            [at0022.6];    -- Portable X-ray
-                                            [at0022.7]     -- Other
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0023] matches {    -- Manufacturer
@@ -171,14 +146,7 @@ definition
                             }
                             ELEMENT[at0029] matches {    -- Equipment Status
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0029.1];    -- Operational
-                                            [at0029.2];    -- Maintenance Required
-                                            [at0029.3];    -- Out of Service
-                                            [at0029.4]     -- Decommissioned
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                         }
@@ -198,16 +166,7 @@ definition
                             }
                             ELEMENT[at0033] matches {    -- Frequency
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0033.1];    -- Daily
-                                            [at0033.2];    -- Weekly
-                                            [at0033.3];    -- Monthly
-                                            [at0033.4];    -- Quarterly
-                                            [at0033.5];    -- Annually
-                                            [at0033.6]     -- As Needed
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0034] matches {    -- Last Performed
@@ -227,14 +186,7 @@ definition
                             }
                             ELEMENT[at0037] matches {    -- Results
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0037.1];    -- Pass
-                                            [at0037.2];    -- Fail
-                                            [at0037.3];    -- Conditional Pass
-                                            [at0037.4]     -- Not Performed
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0038] matches {    -- Comments
@@ -269,13 +221,7 @@ definition
                     }
                     ELEMENT[at0044] matches {    -- Dosimeter Monitoring
                         value matches {
-                            DV_CODED_TEXT matches {
-                                defining_code matches {
-                                    [at0044.1];    -- Active
-                                    [at0044.2];    -- Inactive
-                                    [at0044.3]     -- Under Review
-                                }
-                            }
+                            DV_CODED_TEXT matches {*}
                         }
                     }
                     ELEMENT[at0045] matches {    -- Area Monitoring Results
@@ -294,13 +240,7 @@ definition
                     }
                     ELEMENT[at0047] matches {    -- Emergency Procedures Posted
                         value matches {
-                            DV_CODED_TEXT matches {
-                                defining_code matches {
-                                    [at0047.1];    -- Yes
-                                    [at0047.2];    -- No
-                                    [at0047.3]     -- Partial
-                                }
-                            }
+                            DV_CODED_TEXT matches {*}
                         }
                     }
                 }
@@ -328,16 +268,7 @@ definition
                             }
                             ELEMENT[at0055] matches {    -- Study Type
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0055.1];    -- Radiograph
-                                            [at0055.2];    -- Fluoroscopy
-                                            [at0055.3];    -- CT Scan
-                                            [at0055.4];    -- Mammogram
-                                            [at0055.5];    -- Dental
-                                            [at0055.6]     -- Other
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0056] matches {    -- Body Part
@@ -361,26 +292,12 @@ definition
                             }
                             ELEMENT[at0059] matches {    -- Contrast Used
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0059.1];    -- Yes
-                                            [at0059.2];    -- No
-                                            [at0059.3]     -- Not Applicable
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0060] matches {    -- Study Status
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0060.1];    -- Completed
-                                            [at0060.2];    -- In Progress
-                                            [at0060.3];    -- Cancelled
-                                            [at0060.4];    -- Repeated
-                                            [at0060.5]     -- Rejected
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0061] matches {    -- Preliminary Report
@@ -415,15 +332,7 @@ definition
                             }
                             ELEMENT[at0074] matches {    -- Certification
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0074.1];    -- ARRT Certified
-                                            [at0074.2];    -- State Licensed
-                                            [at0074.3];    -- Board Certified
-                                            [at0074.4];    -- In Training
-                                            [at0074.5]     -- Other
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0075] matches {    -- Certification Number
@@ -443,15 +352,7 @@ definition
                             }
                             ELEMENT[at0078] matches {    -- Shift Assignment
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0078.1];    -- Day Shift
-                                            [at0078.2];    -- Evening Shift
-                                            [at0078.3];    -- Night Shift
-                                            [at0078.4];    -- On Call
-                                            [at0078.5]     -- Rotating
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                         }
@@ -536,28 +437,12 @@ definition
                             }
                             ELEMENT[at0094] matches {    -- Incident Type
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0094.1];    -- Equipment Malfunction
-                                            [at0094.2];    -- Patient Incident
-                                            [at0094.3];    -- Staff Injury
-                                            [at0094.4];    -- Radiation Exposure
-                                            [at0094.5];    -- Quality Issue
-                                            [at0094.6]     -- Other
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0095] matches {    -- Severity
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0095.1];    -- Low
-                                            [at0095.2];    -- Medium
-                                            [at0095.3];    -- High
-                                            [at0095.4]     -- Critical
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0096] matches {    -- Description
@@ -572,13 +457,7 @@ definition
                             }
                             ELEMENT[at0098] matches {    -- Follow-up Required
                                 value matches {
-                                    DV_CODED_TEXT matches {
-                                        defining_code matches {
-                                            [at0098.1];    -- Yes
-                                            [at0098.2];    -- No
-                                            [at0098.3]     -- Under Review
-                                        }
-                                    }
+                                    DV_CODED_TEXT matches {*}
                                 }
                             }
                             ELEMENT[at0099] matches {    -- Reported To
