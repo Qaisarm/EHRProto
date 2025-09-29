@@ -7,15 +7,8 @@
             </terminology_id>
             <code_string>en</code_string>
         </original_language>
-        <languages>
-            <language>
-                <terminology_id>
-                    <value>ISO_639-1</value>
-                </terminology_id>
-                <code_string>en</code_string>
-            </language>
-        </languages>
     </language>
+
     <description>
         <original_author>
             <name>Cascade AI</name>
@@ -33,6 +26,7 @@
             <purpose>Patient registration template for healthcare systems</purpose>
         </details>
     </description>
+
     <uid>
         <value>12345678-1234-1234-1234-123456789abc</value>
     </uid>
@@ -40,9 +34,10 @@
         <value>patient_registration_template</value>
     </template_id>
     <concept>Patient Registration</concept>
+
     <definition>
         <rm_type_name>COMPOSITION</rm_type_name>
-        <node_id></node_id>
+        <node_id>at0000</node_id>
         <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
             <rm_attribute_name>content</rm_attribute_name>
             <cardinality>
@@ -55,9 +50,10 @@
                     <lower>1</lower>
                 </interval>
             </cardinality>
+
             <children xsi:type="C_ARCHETYPE_ROOT">
                 <rm_type_name>SECTION</rm_type_name>
-                <node_id>at0000</node_id>
+                <node_id>at0001</node_id>
                 <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
                     <rm_attribute_name>items</rm_attribute_name>
                     <cardinality>
@@ -70,22 +66,22 @@
                             <lower>1</lower>
                         </interval>
                     </cardinality>
+
                     <children xsi:type="C_ARCHETYPE_ROOT">
-                        <rm_type_name>OBSERVATION</rm_type_name>
-                        <node_id>at0001</node_id>
+                        <rm_type_name>ADMIN_ENTRY</rm_type_name>
+                        <node_id>at0002</node_id>
                         <attributes xsi:type="C_SINGLE_ATTRIBUTE">
                             <rm_attribute_name>data</rm_attribute_name>
                             <existence>
-                                <lower_included>true</lower_included>
-                                <upper_included>true</upper_included>
-                                <lower_unbounded>false</lower_unbounded>
-                                <upper_unbounded>false</upper_unbounded>
                                 <lower>1</lower>
                                 <upper>1</upper>
+                                <lower_included>true</lower_included>
+                                <upper_included>true</upper_included>
                             </existence>
+
                             <children xsi:type="C_COMPLEX_OBJECT">
                                 <rm_type_name>ITEM_TREE</rm_type_name>
-                                <node_id>at0002</node_id>
+                                <node_id>at0003</node_id>
                                 <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
                                     <rm_attribute_name>items</rm_attribute_name>
                                     <cardinality>
@@ -98,9 +94,11 @@
                                             <lower>1</lower>
                                         </interval>
                                     </cardinality>
+
+                                    <!-- Archetype Slots -->
                                     <children xsi:type="ARCHETYPE_SLOT">
                                         <rm_type_name>CLUSTER</rm_type_name>
-                                        <node_id>at0003</node_id>
+                                        <node_id>at0004</node_id>
                                         <includes>
                                             <expression xsi:type="EXPR_BINARY_OPERATOR">
                                                 <type>Boolean</type>
@@ -118,9 +116,10 @@
                                             </expression>
                                         </includes>
                                     </children>
+
                                     <children xsi:type="ARCHETYPE_SLOT">
                                         <rm_type_name>CLUSTER</rm_type_name>
-                                        <node_id>at0004</node_id>
+                                        <node_id>at0005</node_id>
                                         <includes>
                                             <expression xsi:type="EXPR_BINARY_OPERATOR">
                                                 <type>Boolean</type>
@@ -138,9 +137,10 @@
                                             </expression>
                                         </includes>
                                     </children>
+
                                     <children xsi:type="ARCHETYPE_SLOT">
                                         <rm_type_name>CLUSTER</rm_type_name>
-                                        <node_id>at0005</node_id>
+                                        <node_id>at0006</node_id>
                                         <includes>
                                             <expression xsi:type="EXPR_BINARY_OPERATOR">
                                                 <type>Boolean</type>
@@ -158,9 +158,10 @@
                                             </expression>
                                         </includes>
                                     </children>
+
                                     <children xsi:type="ARCHETYPE_SLOT">
                                         <rm_type_name>CLUSTER</rm_type_name>
-                                        <node_id>at0006</node_id>
+                                        <node_id>at0007</node_id>
                                         <includes>
                                             <expression xsi:type="EXPR_BINARY_OPERATOR">
                                                 <type>Boolean</type>
@@ -178,12 +179,13 @@
                                             </expression>
                                         </includes>
                                     </children>
+
                                 </attributes>
                             </children>
                         </attributes>
                         <archetype_details>
                             <archetype_id>
-                                <value>openEHR-EHR-OBSERVATION.patient_registration.v1</value>
+                                <value>openEHR-EHR-ADMIN_ENTRY.patient_registration.v1</value>
                             </archetype_id>
                             <template_id>
                                 <value>patient_registration_template</value>
@@ -194,46 +196,45 @@
             </children>
         </attributes>
     </definition>
-    <rules>
-        <dependencies/>
-    </rules>
-    <annotations/>
+
     <ontology>
         <term_definitions>
-            <languages>
-                <language code="en">
-                    <terms>
-                        <term code="at0000">
-                            <text>Patient Registration</text>
-                            <description>Patient registration section</description>
-                        </term>
-                        <term code="at0001">
-                            <text>Patient Details</text>
-                            <description>Patient demographic and identification details</description>
-                        </term>
-                        <term code="at0002">
-                            <text>Patient Data</text>
-                            <description>Tree containing patient information</description>
-                        </term>
-                        <term code="at0003">
-                            <text>Person Demographics</text>
-                            <description>Demographic information about the person</description>
-                        </term>
-                        <term code="at0004">
-                            <text>Address Information</text>
-                            <description>Patient address details</description>
-                        </term>
-                        <term code="at0005">
-                            <text>Contact Information</text>
-                            <description>Patient contact details</description>
-                        </term>
-                        <term code="at0006">
-                            <text>Patient Identification</text>
-                            <description>Patient identification and emergency contact information</description>
-                        </term>
-                    </terms>
-                </language>
-            </languages>
+            <language code="en">
+                <terms>
+                    <term code="at0000">
+                        <text>Patient Registration</text>
+                        <description>Root composition for patient registration</description>
+                    </term>
+                    <term code="at0001">
+                        <text>Patient Registration Section</text>
+                        <description>Section containing registration details</description>
+                    </term>
+                    <term code="at0002">
+                        <text>Patient Registration Entry</text>
+                        <description>Administrative entry for patient registration</description>
+                    </term>
+                    <term code="at0003">
+                        <text>Patient Data Tree</text>
+                        <description>Tree containing patient registration information</description>
+                    </term>
+                    <term code="at0004">
+                        <text>Person Demographics</text>
+                        <description>Demographic information about the person</description>
+                    </term>
+                    <term code="at0005">
+                        <text>Address Information</text>
+                        <description>Patient address details</description>
+                    </term>
+                    <term code="at0006">
+                        <text>Contact Information</text>
+                        <description>Patient contact details</description>
+                    </term>
+                    <term code="at0007">
+                        <text>Patient Identification</text>
+                        <description>Patient identification and emergency contact information</description>
+                    </term>
+                </terms>
+            </language>
         </term_definitions>
     </ontology>
 </template>
