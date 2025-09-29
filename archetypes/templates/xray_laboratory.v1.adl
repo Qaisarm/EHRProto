@@ -27,7 +27,7 @@ definition
     COMPOSITION[at0000] matches {    -- X-ray Laboratory
         category matches {
             DV_CODED_TEXT matches {
-                defining_code matches {[openehr::433]}    -- event
+                defining_code matches {[openehr::433]}
             }
         }
 
