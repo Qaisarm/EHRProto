@@ -33,10 +33,45 @@ Proto/
 
 ## Getting Started
 
-1. Install an OpenEHR tooling environment (e.g., Archetype Designer, Template Designer)
-2. Import the archetypes from the `archetypes/` directory
-3. Open and customize the template from the `templates/` directory
-4. Export the template for use in your OpenEHR system
+### Quick Start - View Archetypes Locally
+
+First, navigate to where you downloaded/cloned this repository:
+```bash
+cd /path/to/your/Proto
+# Example: cd ~/Downloads/Proto or cd ~/Documents/EHRProto
+```
+
+**Option 1: Interactive Web Viewer (Recommended)**
+```bash
+# Launch the interactive viewer
+./launch_viewer.sh
+```
+This will start a local web server and open the archetype viewer in your browser.
+
+**Option 2: Manual Launch**
+```bash
+# Start a web server
+python3 -m http.server 8000
+
+# Open in browser
+open http://localhost:8000/viewer.html
+```
+
+### Using OpenEHR Tools
+
+1. **Online Archetype Designer:** https://tools.openehr.org/designer/
+   - Import any `.adl` file from the `archetypes/` directory
+   - View, edit, and validate archetypes visually
+
+2. **Clinical Knowledge Manager:** https://ckm.openehr.org/
+   - Browse and search existing archetypes
+   - Upload and share your own
+
+3. **Desktop Tools:**
+   - Download Archetype Editor from https://www.openehr.org/downloads/
+   - Open `.adl` files directly
+
+For detailed instructions, see [USAGE_GUIDE.md](USAGE_GUIDE.md)
 
 ## Resources
 
