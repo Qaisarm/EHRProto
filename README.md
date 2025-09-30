@@ -216,11 +216,41 @@ Manually navigate to the URLs shown in the terminal output.
 
 For detailed instructions, see [USAGE_GUIDE.md](USAGE_GUIDE.md)
 
+## 🌐 Deployment
+
+Deploy your OpenEHR Healthcare System to free hosting platforms:
+
+### Quick Deploy Options:
+
+| Platform | Deploy Time | URL |
+|----------|-------------|-----|
+| **Netlify** | 2 minutes | [Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/Qaisarm/EHRProto) |
+| **Vercel** | 2 minutes | [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https://github.com/Qaisarm/EHRProto) |
+| **GitHub Pages** | Auto | Already configured! |
+| **Cloudflare** | 3 minutes | [Deploy to Cloudflare](https://pages.cloudflare.com/) |
+
+### One-Click Deploy:
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Qaisarm/EHRProto)
+
+[📖 Full Deployment Guide](DEPLOYMENT.md)
+
+### After Deployment:
+
+Your applications will be available at:
+- **Clinical App**: `https://your-domain.com/app/`
+- **Template Viewer**: `https://your-domain.com/viewer.html`
+- **Landing Page**: `https://your-domain.com/`
+
+---
+
 ## Resources
 
 - [OpenEHR Clinical Knowledge Manager](https://ckm.openehr.org/)
 - [OpenEHR Archetype Designer](https://tools.openehr.org/)
 - [OpenEHR Specifications](https://specifications.openehr.org/)
+- [Deployment Guide](DEPLOYMENT.md)
+- [How to Launch](HOW_TO_LAUNCH.md)
 
 ## ADL Format Compatibility
 
