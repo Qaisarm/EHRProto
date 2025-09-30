@@ -1,20 +1,35 @@
-# OpenEHR Patient Registration Templates
+# OpenEHR Healthcare Templates
 
-This project contains OpenEHR templates for patient registration workflows.
+This project contains OpenEHR archetypes and templates for healthcare workflows including patient registration, radiology, and clinical consultations.
 
 ## Project Structure
 
-- `archetypes/` - OpenEHR archetype files (.adl format)
-- `templates/` - Template files (.opt format)
-- `examples/` - Example usage and documentation
+```
+Proto/
+├── archetypes/              # OpenEHR archetype files (.adl format)
+│   ├── composition/         # COMPOSITION archetypes (clinical documents)
+│   ├── cluster/            # CLUSTER archetypes (reusable data groups)
+│   ├── observation/        # OBSERVATION archetypes (clinical observations)
+│   ├── evaluation/         # EVALUATION archetypes (clinical assessments)
+│   ├── instruction/        # INSTRUCTION archetypes (care instructions)
+│   ├── action/             # ACTION archetypes (care actions)
+│   └── admin_entry/        # ADMIN_ENTRY archetypes (administrative data)
+├── templates/              # Operational templates (.opt format)
+├── examples/               # Example usage and documentation
+└── setup.sh               # Setup script
+```
 
-## Patient Registration Template
+## Available Archetypes
 
-The patient registration template includes the following archetypes:
-- Person demographics
-- Contact information
-- Address information
-- Identification details
+### COMPOSITION Archetypes
+- **General Physician Consultation** - Template for GP consultations
+- **X-ray Laboratory** - Template for X-ray laboratory operations
+- **X-ray Radiology Report** - Template for radiology reporting
+
+### CLUSTER Archetypes
+- **Patient Identification** - Patient identification details
+- **Person Demographics** - Demographic information
+- **Registration Other Data** - Additional registration data
 
 ## Getting Started
 
