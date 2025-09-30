@@ -1,0 +1,209 @@
+archetype (adl_version=1.4; uid=3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f)
+    openEHR-EHR-EVALUATION.problem_diagnosis.v1
+
+concept
+    [at0000]    -- Problem/Diagnosis
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Clinical Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"clinical@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record details about a single identified health problem or diagnosis">
+            use = <"Use to record detailed information about a health problem or diagnosis, including clinical description, severity, and status">
+            keywords = <"problem", "diagnosis", "condition", "issue", "complaint">
+            misuse = <"Not to be used for recording symptoms - use appropriate symptom archetypes instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8">
+    >
+
+definition
+    EVALUATION[at0000] matches {    -- Problem/Diagnosis
+        data matches {
+            ITEM_TREE[at0001] matches {    -- Tree
+                items cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0002] matches {    -- Problem/Diagnosis Name
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0003] occurrences matches {0..1} matches {    -- Clinical Description
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0004] occurrences matches {0..1} matches {    -- Date of Onset
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0005] occurrences matches {0..1} matches {    -- Severity
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0006,    -- Mild
+                                    at0007,    -- Moderate
+                                    at0008]    -- Severe
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0009] occurrences matches {0..1} matches {    -- Status
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0010,    -- Active
+                                    at0011,    -- Inactive
+                                    at0012,    -- Resolved
+                                    at0013]    -- In remission
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0014] occurrences matches {0..1} matches {    -- Date of Resolution
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0015] occurrences matches {0..1} matches {    -- Diagnostic Certainty
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0016,    -- Suspected
+                                    at0017,    -- Probable
+                                    at0018]    -- Confirmed
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0019] occurrences matches {0..1} matches {    -- Comment
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0020] matches {    -- Tree
+                items cardinality matches {0..*; unordered} matches {
+                    ELEMENT[at0021] occurrences matches {0..1} matches {    -- Last Updated
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Problem/Diagnosis">
+                    description = <"A health problem or diagnosis identified for the patient">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Problem/Diagnosis Name">
+                    description = <"Identification of the problem or diagnosis">
+                >
+                ["at0003"] = <
+                    text = <"Clinical Description">
+                    description = <"Narrative description of the problem or diagnosis">
+                >
+                ["at0004"] = <
+                    text = <"Date of Onset">
+                    description = <"Estimated or actual date/time the problem began">
+                >
+                ["at0005"] = <
+                    text = <"Severity">
+                    description = <"The severity of the problem or diagnosis">
+                >
+                ["at0006"] = <
+                    text = <"Mild">
+                    description = <"The problem is mild">
+                >
+                ["at0007"] = <
+                    text = <"Moderate">
+                    description = <"The problem is moderate">
+                >
+                ["at0008"] = <
+                    text = <"Severe">
+                    description = <"The problem is severe">
+                >
+                ["at0009"] = <
+                    text = <"Status">
+                    description = <"The status of the problem or diagnosis">
+                >
+                ["at0010"] = <
+                    text = <"Active">
+                    description = <"The problem is currently active">
+                >
+                ["at0011"] = <
+                    text = <"Inactive">
+                    description = <"The problem is currently inactive">
+                >
+                ["at0012"] = <
+                    text = <"Resolved">
+                    description = <"The problem has been resolved">
+                >
+                ["at0013"] = <
+                    text = <"In remission">
+                    description = <"The problem is in remission">
+                >
+                ["at0014"] = <
+                    text = <"Date of Resolution">
+                    description = <"The date when the problem was resolved">
+                >
+                ["at0015"] = <
+                    text = <"Diagnostic Certainty">
+                    description = <"The level of certainty about the diagnosis">
+                >
+                ["at0016"] = <
+                    text = <"Suspected">
+                    description = <"The diagnosis is suspected">
+                >
+                ["at0017"] = <
+                    text = <"Probable">
+                    description = <"The diagnosis is probable">
+                >
+                ["at0018"] = <
+                    text = <"Confirmed">
+                    description = <"The diagnosis is confirmed">
+                >
+                ["at0019"] = <
+                    text = <"Comment">
+                    description = <"Additional narrative about the problem or diagnosis">
+                >
+                ["at0020"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0021"] = <
+                    text = <"Last Updated">
+                    description = <"Date when this problem/diagnosis record was last updated">
+                >
+            >
+        >
+    >

@@ -1,0 +1,336 @@
+archetype (adl_version=1.4; uid=5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b)
+    openEHR-EHR-INSTRUCTION.medication_order.v1
+
+concept
+    [at0000]    -- Medication Order
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Clinical Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"clinical@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record an instruction for the ordering, prescribing, dispensing and administration of medication">
+            use = <"Use to record medication orders including dosage, frequency, route, and duration">
+            keywords = <"medication", "prescription", "drug", "order", "pharmaceutical">
+            misuse = <"Not to be used for recording actual administration - use medication action archetype instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0">
+    >
+
+definition
+    INSTRUCTION[at0000] matches {    -- Medication Order
+        activities cardinality matches {0..*; unordered} matches {
+            ACTIVITY[at0001] occurrences matches {0..1} matches {    -- Order
+                description matches {
+                    ITEM_TREE[at0002] matches {    -- Tree
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0003] matches {    -- Medication Name
+                                value matches {
+                                    DV_TEXT matches {*}
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0004] occurrences matches {0..1} matches {    -- Medication Form
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0005,    -- Tablet
+                                            at0006,    -- Capsule
+                                            at0007,    -- Liquid
+                                            at0008,    -- Injection
+                                            at0009,    -- Cream
+                                            at0010,    -- Ointment
+                                            at0011]    -- Inhaler
+                                        }
+                                    }
+                                }
+                            }
+                            CLUSTER[at0012] occurrences matches {0..1} matches {    -- Dose
+                                items cardinality matches {1..*; unordered} matches {
+                                    ELEMENT[at0013] occurrences matches {0..1} matches {    -- Dose Amount
+                                        value matches {
+                                            DV_QUANTITY matches {*}
+                                        }
+                                    }
+                                    ELEMENT[at0014] occurrences matches {0..1} matches {    -- Dose Unit
+                                        value matches {
+                                            DV_TEXT matches {*}
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0015] occurrences matches {0..1} matches {    -- Route
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0016,    -- Oral
+                                            at0017,    -- Intravenous
+                                            at0018,    -- Intramuscular
+                                            at0019,    -- Subcutaneous
+                                            at0020,    -- Topical
+                                            at0021,    -- Inhalation
+                                            at0022]    -- Rectal
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0023] occurrences matches {0..1} matches {    -- Frequency
+                                value matches {
+                                    DV_TEXT matches {*}
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0024,    -- Once daily
+                                            at0025,    -- Twice daily
+                                            at0026,    -- Three times daily
+                                            at0027,    -- Four times daily
+                                            at0028,    -- As needed
+                                            at0029]    -- Every hour
+                                        }
+                                    }
+                                }
+                            }
+                            ELEMENT[at0030] occurrences matches {0..1} matches {    -- Duration
+                                value matches {
+                                    DV_DURATION matches {*}
+                                }
+                            }
+                            ELEMENT[at0031] occurrences matches {0..1} matches {    -- Start Date
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                            ELEMENT[at0032] occurrences matches {0..1} matches {    -- Stop Date
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                            ELEMENT[at0033] occurrences matches {0..1} matches {    -- Clinical Indication
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0034] occurrences matches {0..1} matches {    -- Special Instructions
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0035] occurrences matches {0..1} matches {    -- Order Status
+                                value matches {
+                                    DV_CODED_TEXT matches {
+                                        defining_code matches {
+                                            [local::
+                                            at0036,    -- Active
+                                            at0037,    -- Suspended
+                                            at0038,    -- Completed
+                                            at0039]    -- Cancelled
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0040] matches {    -- Tree
+                items cardinality matches {0..*; unordered} matches {
+                    ELEMENT[at0041] occurrences matches {0..1} matches {    -- Order ID
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Medication Order">
+                    description = <"Instruction for the ordering and administration of medication">
+                >
+                ["at0001"] = <
+                    text = <"Order">
+                    description = <"Medication order activity">
+                >
+                ["at0002"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0003"] = <
+                    text = <"Medication Name">
+                    description = <"Name of the medication">
+                >
+                ["at0004"] = <
+                    text = <"Medication Form">
+                    description = <"The form of the medication">
+                >
+                ["at0005"] = <
+                    text = <"Tablet">
+                    description = <"Tablet form">
+                >
+                ["at0006"] = <
+                    text = <"Capsule">
+                    description = <"Capsule form">
+                >
+                ["at0007"] = <
+                    text = <"Liquid">
+                    description = <"Liquid form">
+                >
+                ["at0008"] = <
+                    text = <"Injection">
+                    description = <"Injectable form">
+                >
+                ["at0009"] = <
+                    text = <"Cream">
+                    description = <"Cream form">
+                >
+                ["at0010"] = <
+                    text = <"Ointment">
+                    description = <"Ointment form">
+                >
+                ["at0011"] = <
+                    text = <"Inhaler">
+                    description = <"Inhaler form">
+                >
+                ["at0012"] = <
+                    text = <"Dose">
+                    description = <"The dose to be administered">
+                >
+                ["at0013"] = <
+                    text = <"Dose Amount">
+                    description = <"The amount of the dose">
+                >
+                ["at0014"] = <
+                    text = <"Dose Unit">
+                    description = <"The unit of the dose">
+                >
+                ["at0015"] = <
+                    text = <"Route">
+                    description = <"The route of administration">
+                >
+                ["at0016"] = <
+                    text = <"Oral">
+                    description = <"Administered by mouth">
+                >
+                ["at0017"] = <
+                    text = <"Intravenous">
+                    description = <"Administered into a vein">
+                >
+                ["at0018"] = <
+                    text = <"Intramuscular">
+                    description = <"Administered into a muscle">
+                >
+                ["at0019"] = <
+                    text = <"Subcutaneous">
+                    description = <"Administered under the skin">
+                >
+                ["at0020"] = <
+                    text = <"Topical">
+                    description = <"Applied to the skin">
+                >
+                ["at0021"] = <
+                    text = <"Inhalation">
+                    description = <"Administered by inhalation">
+                >
+                ["at0022"] = <
+                    text = <"Rectal">
+                    description = <"Administered rectally">
+                >
+                ["at0023"] = <
+                    text = <"Frequency">
+                    description = <"How often the medication should be administered">
+                >
+                ["at0024"] = <
+                    text = <"Once daily">
+                    description = <"Once per day">
+                >
+                ["at0025"] = <
+                    text = <"Twice daily">
+                    description = <"Two times per day">
+                >
+                ["at0026"] = <
+                    text = <"Three times daily">
+                    description = <"Three times per day">
+                >
+                ["at0027"] = <
+                    text = <"Four times daily">
+                    description = <"Four times per day">
+                >
+                ["at0028"] = <
+                    text = <"As needed">
+                    description = <"As needed (PRN)">
+                >
+                ["at0029"] = <
+                    text = <"Every hour">
+                    description = <"Every hour">
+                >
+                ["at0030"] = <
+                    text = <"Duration">
+                    description = <"The duration of the medication order">
+                >
+                ["at0031"] = <
+                    text = <"Start Date">
+                    description = <"When to start the medication">
+                >
+                ["at0032"] = <
+                    text = <"Stop Date">
+                    description = <"When to stop the medication">
+                >
+                ["at0033"] = <
+                    text = <"Clinical Indication">
+                    description = <"The reason for prescribing the medication">
+                >
+                ["at0034"] = <
+                    text = <"Special Instructions">
+                    description = <"Additional instructions for administration">
+                >
+                ["at0035"] = <
+                    text = <"Order Status">
+                    description = <"The status of the medication order">
+                >
+                ["at0036"] = <
+                    text = <"Active">
+                    description = <"Order is active">
+                >
+                ["at0037"] = <
+                    text = <"Suspended">
+                    description = <"Order is suspended">
+                >
+                ["at0038"] = <
+                    text = <"Completed">
+                    description = <"Order is completed">
+                >
+                ["at0039"] = <
+                    text = <"Cancelled">
+                    description = <"Order is cancelled">
+                >
+                ["at0040"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0041"] = <
+                    text = <"Order ID">
+                    description = <"Unique identifier for the medication order">
+                >
+            >
+        >
+    >

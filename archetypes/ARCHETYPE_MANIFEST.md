@@ -23,30 +23,45 @@ Located in: `archetypes/cluster/`
 ## OBSERVATION Archetypes
 Located in: `archetypes/observation/`
 
-*No observation archetypes currently defined*
+| Archetype ID | Version | Purpose | Status |
+|--------------|---------|---------|--------|
+| openEHR-EHR-OBSERVATION.vital_signs.v1 | 1.0 | Recording vital signs (BP, HR, temp, RR, SpO2) | Draft |
+| openEHR-EHR-OBSERVATION.laboratory_test_result.v1 | 1.0 | Laboratory test results and pathology investigations | Draft |
 
 ## EVALUATION Archetypes
 Located in: `archetypes/evaluation/`
 
-*No evaluation archetypes currently defined*
+| Archetype ID | Version | Purpose | Status |
+|--------------|---------|---------|--------|
+| openEHR-EHR-EVALUATION.problem_diagnosis.v1 | 1.0 | Recording health problems and diagnoses | Draft |
+| openEHR-EHR-EVALUATION.clinical_risk_assessment.v1 | 1.0 | Clinical risk assessments and scoring | Draft |
 
 ## INSTRUCTION Archetypes
 Located in: `archetypes/instruction/`
 
-*No instruction archetypes currently defined*
+| Archetype ID | Version | Purpose | Status |
+|--------------|---------|---------|--------|
+| openEHR-EHR-INSTRUCTION.medication_order.v1 | 1.0 | Medication orders and prescriptions | Draft |
+| openEHR-EHR-INSTRUCTION.service_request.v1 | 1.0 | Healthcare service requests (tests, procedures, referrals) | Draft |
 
 ## ACTION Archetypes
 Located in: `archetypes/action/`
 
-*No action archetypes currently defined*
+| Archetype ID | Version | Purpose | Status |
+|--------------|---------|---------|--------|
+| openEHR-EHR-ACTION.medication_administration.v1 | 1.0 | Recording medication administration | Draft |
+| openEHR-EHR-ACTION.procedure.v1 | 1.0 | Recording procedures performed | Draft |
 
 ## ADMIN_ENTRY Archetypes
 Located in: `archetypes/admin_entry/`
 
-*No admin_entry archetypes currently defined*
+| Archetype ID | Version | Purpose | Status |
+|--------------|---------|---------|--------|
+| openEHR-EHR-ADMIN_ENTRY.admission.v1 | 1.0 | Hospital admission administrative details | Draft |
+| openEHR-EHR-ADMIN_ENTRY.discharge.v1 | 1.0 | Hospital discharge administrative details | Draft |
 
 ---
 
 **Last Updated:** 2025-09-30  
 **ADL Version:** 1.4  
-**Total Archetypes:** 6
+**Total Archetypes:** 16

@@ -1,0 +1,236 @@
+archetype (adl_version=1.4; uid=0d1e2f3a-4b5c-6d7e-8f9a-0b1c2d3e4f5a)
+    openEHR-EHR-ADMIN_ENTRY.discharge.v1
+
+concept
+    [at0000]    -- Hospital Discharge
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Administrative Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"admin@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record administrative details about a patient's hospital discharge">
+            use = <"Use to record discharge details including discharge date, destination, and discharge type">
+            keywords = <"discharge", "hospital", "release", "discharge date", "destination">
+            misuse = <"Not to be used for clinical discharge summaries - use appropriate clinical archetypes instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5">
+    >
+
+definition
+    ADMIN_ENTRY[at0000] matches {    -- Hospital Discharge
+        data matches {
+            ITEM_TREE[at0001] matches {    -- Tree
+                items cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0002] matches {    -- Discharge Date/Time
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0003] occurrences matches {0..1} matches {    -- Discharge Type
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0004,    -- Routine
+                                    at0005,    -- Against Medical Advice
+                                    at0006,    -- Transfer
+                                    at0007,    -- Deceased
+                                    at0008]    -- Absconded
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0009] occurrences matches {0..1} matches {    -- Discharge Destination
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0010,    -- Home
+                                    at0011,    -- Another Hospital
+                                    at0012,    -- Nursing Home
+                                    at0013,    -- Rehabilitation Facility
+                                    at0014,    -- Hospice
+                                    at0015]    -- Other
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0016] occurrences matches {0..1} matches {    -- Discharging Physician
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0017] occurrences matches {0..1} matches {    -- Length of Stay
+                        value matches {
+                            DV_DURATION matches {*}
+                        }
+                    }
+                    ELEMENT[at0018] occurrences matches {0..1} matches {    -- Discharge Instructions Given
+                        value matches {
+                            DV_BOOLEAN matches {*}
+                        }
+                    }
+                    ELEMENT[at0019] occurrences matches {0..1} matches {    -- Follow-up Arranged
+                        value matches {
+                            DV_BOOLEAN matches {*}
+                        }
+                    }
+                    ELEMENT[at0020] occurrences matches {0..1} matches {    -- Follow-up Date
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0021] occurrences matches {0..1} matches {    -- Transport Arranged
+                        value matches {
+                            DV_BOOLEAN matches {*}
+                        }
+                    }
+                    ELEMENT[at0022] occurrences matches {0..1} matches {    -- Discharge Status
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0023,    -- Discharged
+                                    at0024,    -- Pending
+                                    at0025]    -- Cancelled
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0026] occurrences matches {0..1} matches {    -- Comment
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Hospital Discharge">
+                    description = <"Administrative details about a patient's hospital discharge">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Discharge Date/Time">
+                    description = <"Date and time of discharge">
+                >
+                ["at0003"] = <
+                    text = <"Discharge Type">
+                    description = <"Type of discharge">
+                >
+                ["at0004"] = <
+                    text = <"Routine">
+                    description = <"Routine discharge">
+                >
+                ["at0005"] = <
+                    text = <"Against Medical Advice">
+                    description = <"Patient discharged against medical advice">
+                >
+                ["at0006"] = <
+                    text = <"Transfer">
+                    description = <"Transfer to another facility">
+                >
+                ["at0007"] = <
+                    text = <"Deceased">
+                    description = <"Patient deceased">
+                >
+                ["at0008"] = <
+                    text = <"Absconded">
+                    description = <"Patient absconded">
+                >
+                ["at0009"] = <
+                    text = <"Discharge Destination">
+                    description = <"Destination to which the patient is discharged">
+                >
+                ["at0010"] = <
+                    text = <"Home">
+                    description = <"Discharged to home">
+                >
+                ["at0011"] = <
+                    text = <"Another Hospital">
+                    description = <"Transferred to another hospital">
+                >
+                ["at0012"] = <
+                    text = <"Nursing Home">
+                    description = <"Discharged to nursing home">
+                >
+                ["at0013"] = <
+                    text = <"Rehabilitation Facility">
+                    description = <"Discharged to rehabilitation facility">
+                >
+                ["at0014"] = <
+                    text = <"Hospice">
+                    description = <"Discharged to hospice">
+                >
+                ["at0015"] = <
+                    text = <"Other">
+                    description = <"Other discharge destination">
+                >
+                ["at0016"] = <
+                    text = <"Discharging Physician">
+                    description = <"Physician responsible for the discharge">
+                >
+                ["at0017"] = <
+                    text = <"Length of Stay">
+                    description = <"Total duration of hospital stay">
+                >
+                ["at0018"] = <
+                    text = <"Discharge Instructions Given">
+                    description = <"Whether discharge instructions were provided to the patient">
+                >
+                ["at0019"] = <
+                    text = <"Follow-up Arranged">
+                    description = <"Whether follow-up appointment has been arranged">
+                >
+                ["at0020"] = <
+                    text = <"Follow-up Date">
+                    description = <"Date of follow-up appointment">
+                >
+                ["at0021"] = <
+                    text = <"Transport Arranged">
+                    description = <"Whether transport has been arranged for discharge">
+                >
+                ["at0022"] = <
+                    text = <"Discharge Status">
+                    description = <"Current status of the discharge">
+                >
+                ["at0023"] = <
+                    text = <"Discharged">
+                    description = <"Patient has been discharged">
+                >
+                ["at0024"] = <
+                    text = <"Pending">
+                    description = <"Discharge is pending">
+                >
+                ["at0025"] = <
+                    text = <"Cancelled">
+                    description = <"Discharge has been cancelled">
+                >
+                ["at0026"] = <
+                    text = <"Comment">
+                    description = <"Additional comments about the discharge">
+                >
+            >
+        >
+    >

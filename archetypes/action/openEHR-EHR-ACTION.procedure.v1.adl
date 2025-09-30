@@ -1,0 +1,333 @@
+archetype (adl_version=1.4; uid=8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e)
+    openEHR-EHR-ACTION.procedure.v1
+
+concept
+    [at0000]    -- Procedure
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Clinical Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"clinical@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record the action of performing a clinical procedure">
+            use = <"Use to record details of procedures performed including surgical, diagnostic, and therapeutic procedures">
+            keywords = <"procedure", "operation", "surgery", "intervention", "treatment">
+            misuse = <"Not to be used for medication administration - use medication action archetype instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3">
+    >
+
+definition
+    ACTION[at0000] matches {    -- Procedure
+        ism_transition matches {
+            ISM_TRANSITION[at0001] matches {    -- Planned
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::526]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0002] matches {    -- Scheduled
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::529]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0003] matches {    -- In Progress
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::245]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0004] matches {    -- Suspended
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::530]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0005] matches {    -- Aborted
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::531]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0006] matches {    -- Completed
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::532]}
+                    }
+                }
+            }
+        }
+        description matches {
+            ITEM_TREE[at0007] matches {    -- Tree
+                items cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0008] matches {    -- Procedure Name
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0009] occurrences matches {0..1} matches {    -- Procedure Type
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0010,    -- Surgical
+                                    at0011,    -- Diagnostic
+                                    at0012,    -- Therapeutic
+                                    at0013]    -- Preventive
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0014] occurrences matches {0..1} matches {    -- Description
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0015] occurrences matches {0..1} matches {    -- Body Site
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0016] occurrences matches {0..1} matches {    -- Laterality
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0017,    -- Left
+                                    at0018,    -- Right
+                                    at0019]    -- Bilateral
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0020] occurrences matches {0..1} matches {    -- Start Time
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0021] occurrences matches {0..1} matches {    -- End Time
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0022] occurrences matches {0..1} matches {    -- Performed By
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0023] occurrences matches {0..1} matches {    -- Clinical Indication
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0024] occurrences matches {0..1} matches {    -- Outcome
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0025,    -- Successful
+                                    at0026,    -- Partially Successful
+                                    at0027]    -- Unsuccessful
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0028] occurrences matches {0..1} matches {    -- Complications
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0029] occurrences matches {0..1} matches {    -- Reason for Suspension/Abortion
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0030] occurrences matches {0..1} matches {    -- Comment
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0031] matches {    -- Tree
+                items cardinality matches {0..*; unordered} matches {
+                    ELEMENT[at0032] occurrences matches {0..1} matches {    -- Request ID
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0033] occurrences matches {0..1} matches {    -- Method
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Procedure">
+                    description = <"A clinical procedure performed on a patient">
+                >
+                ["at0001"] = <
+                    text = <"Planned">
+                    description = <"Procedure is planned">
+                >
+                ["at0002"] = <
+                    text = <"Scheduled">
+                    description = <"Procedure has been scheduled">
+                >
+                ["at0003"] = <
+                    text = <"In Progress">
+                    description = <"Procedure is in progress">
+                >
+                ["at0004"] = <
+                    text = <"Suspended">
+                    description = <"Procedure has been suspended">
+                >
+                ["at0005"] = <
+                    text = <"Aborted">
+                    description = <"Procedure was aborted">
+                >
+                ["at0006"] = <
+                    text = <"Completed">
+                    description = <"Procedure is completed">
+                >
+                ["at0007"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0008"] = <
+                    text = <"Procedure Name">
+                    description = <"Name of the procedure performed">
+                >
+                ["at0009"] = <
+                    text = <"Procedure Type">
+                    description = <"Type of procedure">
+                >
+                ["at0010"] = <
+                    text = <"Surgical">
+                    description = <"Surgical procedure">
+                >
+                ["at0011"] = <
+                    text = <"Diagnostic">
+                    description = <"Diagnostic procedure">
+                >
+                ["at0012"] = <
+                    text = <"Therapeutic">
+                    description = <"Therapeutic procedure">
+                >
+                ["at0013"] = <
+                    text = <"Preventive">
+                    description = <"Preventive procedure">
+                >
+                ["at0014"] = <
+                    text = <"Description">
+                    description = <"Detailed description of the procedure">
+                >
+                ["at0015"] = <
+                    text = <"Body Site">
+                    description = <"Body site where the procedure was performed">
+                >
+                ["at0016"] = <
+                    text = <"Laterality">
+                    description = <"Side of the body">
+                >
+                ["at0017"] = <
+                    text = <"Left">
+                    description = <"Left side">
+                >
+                ["at0018"] = <
+                    text = <"Right">
+                    description = <"Right side">
+                >
+                ["at0019"] = <
+                    text = <"Bilateral">
+                    description = <"Both sides">
+                >
+                ["at0020"] = <
+                    text = <"Start Time">
+                    description = <"Date and time when the procedure started">
+                >
+                ["at0021"] = <
+                    text = <"End Time">
+                    description = <"Date and time when the procedure ended">
+                >
+                ["at0022"] = <
+                    text = <"Performed By">
+                    description = <"Healthcare professional who performed the procedure">
+                >
+                ["at0023"] = <
+                    text = <"Clinical Indication">
+                    description = <"Clinical reason for performing the procedure">
+                >
+                ["at0024"] = <
+                    text = <"Outcome">
+                    description = <"Outcome of the procedure">
+                >
+                ["at0025"] = <
+                    text = <"Successful">
+                    description = <"Procedure was successful">
+                >
+                ["at0026"] = <
+                    text = <"Partially Successful">
+                    description = <"Procedure was partially successful">
+                >
+                ["at0027"] = <
+                    text = <"Unsuccessful">
+                    description = <"Procedure was unsuccessful">
+                >
+                ["at0028"] = <
+                    text = <"Complications">
+                    description = <"Any complications that occurred during or after the procedure">
+                >
+                ["at0029"] = <
+                    text = <"Reason for Suspension/Abortion">
+                    description = <"Reason why the procedure was suspended or aborted">
+                >
+                ["at0030"] = <
+                    text = <"Comment">
+                    description = <"Additional comments about the procedure">
+                >
+                ["at0031"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0032"] = <
+                    text = <"Request ID">
+                    description = <"Reference to the procedure request">
+                >
+                ["at0033"] = <
+                    text = <"Method">
+                    description = <"Method or technique used for the procedure">
+                >
+            >
+        >
+    >

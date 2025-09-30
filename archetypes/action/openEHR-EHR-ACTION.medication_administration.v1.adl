@@ -1,0 +1,299 @@
+archetype (adl_version=1.4; uid=7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d)
+    openEHR-EHR-ACTION.medication_administration.v1
+
+concept
+    [at0000]    -- Medication Administration
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Clinical Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"clinical@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record the action of administering medication to a patient">
+            use = <"Use to record actual administration of medication including dose, route, time, and administering clinician">
+            keywords = <"medication", "administration", "drug", "dose", "given">
+            misuse = <"Not to be used for medication orders - use medication instruction archetype instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2">
+    >
+
+definition
+    ACTION[at0000] matches {    -- Medication Administration
+        ism_transition matches {
+            ISM_TRANSITION[at0001] matches {    -- Planned
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::526]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0002] matches {    -- Administered
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::245]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0003] matches {    -- Not Administered
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::531]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0004] matches {    -- Suspended
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::530]}
+                    }
+                }
+            }
+            ISM_TRANSITION[at0005] matches {    -- Completed
+                current_state matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {[openehr::532]}
+                    }
+                }
+            }
+        }
+        description matches {
+            ITEM_TREE[at0006] matches {    -- Tree
+                items cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0007] matches {    -- Medication Name
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    CLUSTER[at0008] occurrences matches {0..1} matches {    -- Dose Administered
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0009] occurrences matches {0..1} matches {    -- Dose Amount
+                                value matches {
+                                    DV_QUANTITY matches {*}
+                                }
+                            }
+                            ELEMENT[at0010] occurrences matches {0..1} matches {    -- Dose Unit
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0011] occurrences matches {0..1} matches {    -- Route
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0012,    -- Oral
+                                    at0013,    -- Intravenous
+                                    at0014,    -- Intramuscular
+                                    at0015,    -- Subcutaneous
+                                    at0016,    -- Topical
+                                    at0017,    -- Inhalation
+                                    at0018]    -- Rectal
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0019] occurrences matches {0..1} matches {    -- Administration Time
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0020] occurrences matches {0..1} matches {    -- Administered By
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0021] occurrences matches {0..1} matches {    -- Reason Not Administered
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0022,    -- Patient Refused
+                                    at0023,    -- Patient Unavailable
+                                    at0024,    -- Medication Unavailable
+                                    at0025,    -- Clinical Contraindication
+                                    at0026]    -- Other
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0027] occurrences matches {0..1} matches {    -- Batch Number
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0028] occurrences matches {0..1} matches {    -- Expiry Date
+                        value matches {
+                            DV_DATE matches {*}
+                        }
+                    }
+                    ELEMENT[at0029] occurrences matches {0..1} matches {    -- Comment
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0030] matches {    -- Tree
+                items cardinality matches {0..*; unordered} matches {
+                    ELEMENT[at0031] occurrences matches {0..1} matches {    -- Order ID
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Medication Administration">
+                    description = <"The action of administering medication to a patient">
+                >
+                ["at0001"] = <
+                    text = <"Planned">
+                    description = <"Administration is planned">
+                >
+                ["at0002"] = <
+                    text = <"Administered">
+                    description = <"Medication has been administered">
+                >
+                ["at0003"] = <
+                    text = <"Not Administered">
+                    description = <"Medication was not administered">
+                >
+                ["at0004"] = <
+                    text = <"Suspended">
+                    description = <"Administration has been suspended">
+                >
+                ["at0005"] = <
+                    text = <"Completed">
+                    description = <"Administration is completed">
+                >
+                ["at0006"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0007"] = <
+                    text = <"Medication Name">
+                    description = <"Name of the medication administered">
+                >
+                ["at0008"] = <
+                    text = <"Dose Administered">
+                    description = <"The dose that was administered">
+                >
+                ["at0009"] = <
+                    text = <"Dose Amount">
+                    description = <"The amount of the dose">
+                >
+                ["at0010"] = <
+                    text = <"Dose Unit">
+                    description = <"The unit of the dose">
+                >
+                ["at0011"] = <
+                    text = <"Route">
+                    description = <"The route of administration">
+                >
+                ["at0012"] = <
+                    text = <"Oral">
+                    description = <"Administered by mouth">
+                >
+                ["at0013"] = <
+                    text = <"Intravenous">
+                    description = <"Administered into a vein">
+                >
+                ["at0014"] = <
+                    text = <"Intramuscular">
+                    description = <"Administered into a muscle">
+                >
+                ["at0015"] = <
+                    text = <"Subcutaneous">
+                    description = <"Administered under the skin">
+                >
+                ["at0016"] = <
+                    text = <"Topical">
+                    description = <"Applied to the skin">
+                >
+                ["at0017"] = <
+                    text = <"Inhalation">
+                    description = <"Administered by inhalation">
+                >
+                ["at0018"] = <
+                    text = <"Rectal">
+                    description = <"Administered rectally">
+                >
+                ["at0019"] = <
+                    text = <"Administration Time">
+                    description = <"Date and time when the medication was administered">
+                >
+                ["at0020"] = <
+                    text = <"Administered By">
+                    description = <"Healthcare professional who administered the medication">
+                >
+                ["at0021"] = <
+                    text = <"Reason Not Administered">
+                    description = <"Reason why the medication was not administered">
+                >
+                ["at0022"] = <
+                    text = <"Patient Refused">
+                    description = <"Patient refused the medication">
+                >
+                ["at0023"] = <
+                    text = <"Patient Unavailable">
+                    description = <"Patient was unavailable">
+                >
+                ["at0024"] = <
+                    text = <"Medication Unavailable">
+                    description = <"Medication was not available">
+                >
+                ["at0025"] = <
+                    text = <"Clinical Contraindication">
+                    description = <"Clinical contraindication identified">
+                >
+                ["at0026"] = <
+                    text = <"Other">
+                    description = <"Other reason">
+                >
+                ["at0027"] = <
+                    text = <"Batch Number">
+                    description = <"Batch or lot number of the medication">
+                >
+                ["at0028"] = <
+                    text = <"Expiry Date">
+                    description = <"Expiry date of the medication">
+                >
+                ["at0029"] = <
+                    text = <"Comment">
+                    description = <"Additional comments about the administration">
+                >
+                ["at0030"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0031"] = <
+                    text = <"Order ID">
+                    description = <"Reference to the medication order">
+                >
+            >
+        >
+    >

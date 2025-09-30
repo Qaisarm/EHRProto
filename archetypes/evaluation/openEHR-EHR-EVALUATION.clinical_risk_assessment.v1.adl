@@ -1,0 +1,211 @@
+archetype (adl_version=1.4; uid=4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a)
+    openEHR-EHR-EVALUATION.clinical_risk_assessment.v1
+
+concept
+    [at0000]    -- Clinical Risk Assessment
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Clinical Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"clinical@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record the results of a clinical risk assessment for a specific health condition or outcome">
+            use = <"Use to record risk assessments for various clinical conditions such as cardiovascular disease, falls, pressure ulcers, etc.">
+            keywords = <"risk", "assessment", "evaluation", "screening", "score">
+            misuse = <"Not to be used for recording actual diagnoses - use problem/diagnosis archetype instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9">
+    >
+
+definition
+    EVALUATION[at0000] matches {    -- Clinical Risk Assessment
+        data matches {
+            ITEM_TREE[at0001] matches {    -- Tree
+                items cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0002] matches {    -- Risk Assessment Type
+                        value matches {
+                            DV_TEXT matches {*}
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0003] occurrences matches {0..1} matches {    -- Risk Category
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0004,    -- Low Risk
+                                    at0005,    -- Moderate Risk
+                                    at0006,    -- High Risk
+                                    at0007]    -- Very High Risk
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0008] occurrences matches {0..1} matches {    -- Risk Score
+                        value matches {
+                            DV_QUANTITY matches {*}
+                            DV_COUNT matches {*}
+                        }
+                    }
+                    ELEMENT[at0009] occurrences matches {0..1} matches {    -- Risk Percentage
+                        value matches {
+                            DV_PROPORTION matches {
+                                numerator matches {|0.0..100.0|}
+                                denominator matches {|100.0|}
+                                type matches {2}
+                            }
+                        }
+                    }
+                    CLUSTER[at0010] occurrences matches {0..*} matches {    -- Risk Factors
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0011] occurrences matches {0..1} matches {    -- Risk Factor
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0012] occurrences matches {0..1} matches {    -- Presence
+                                value matches {
+                                    DV_BOOLEAN matches {*}
+                                }
+                            }
+                            ELEMENT[at0013] occurrences matches {0..1} matches {    -- Description
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0014] occurrences matches {0..1} matches {    -- Assessment Date
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0015] occurrences matches {0..1} matches {    -- Next Review Date
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0016] occurrences matches {0..1} matches {    -- Recommendations
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0017] occurrences matches {0..1} matches {    -- Comment
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+        protocol matches {
+            ITEM_TREE[at0018] matches {    -- Tree
+                items cardinality matches {0..*; unordered} matches {
+                    ELEMENT[at0019] occurrences matches {0..1} matches {    -- Assessment Tool
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Clinical Risk Assessment">
+                    description = <"Assessment of clinical risk for a specific health condition or outcome">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Risk Assessment Type">
+                    description = <"The type of risk being assessed">
+                >
+                ["at0003"] = <
+                    text = <"Risk Category">
+                    description = <"Overall category of risk">
+                >
+                ["at0004"] = <
+                    text = <"Low Risk">
+                    description = <"The patient is at low risk">
+                >
+                ["at0005"] = <
+                    text = <"Moderate Risk">
+                    description = <"The patient is at moderate risk">
+                >
+                ["at0006"] = <
+                    text = <"High Risk">
+                    description = <"The patient is at high risk">
+                >
+                ["at0007"] = <
+                    text = <"Very High Risk">
+                    description = <"The patient is at very high risk">
+                >
+                ["at0008"] = <
+                    text = <"Risk Score">
+                    description = <"Calculated risk score">
+                >
+                ["at0009"] = <
+                    text = <"Risk Percentage">
+                    description = <"Risk expressed as a percentage">
+                >
+                ["at0010"] = <
+                    text = <"Risk Factors">
+                    description = <"Individual risk factors identified">
+                >
+                ["at0011"] = <
+                    text = <"Risk Factor">
+                    description = <"Name of the risk factor">
+                >
+                ["at0012"] = <
+                    text = <"Presence">
+                    description = <"Whether the risk factor is present">
+                >
+                ["at0013"] = <
+                    text = <"Description">
+                    description = <"Description of the risk factor">
+                >
+                ["at0014"] = <
+                    text = <"Assessment Date">
+                    description = <"Date when the risk assessment was performed">
+                >
+                ["at0015"] = <
+                    text = <"Next Review Date">
+                    description = <"Date when the risk assessment should be reviewed">
+                >
+                ["at0016"] = <
+                    text = <"Recommendations">
+                    description = <"Clinical recommendations based on the risk assessment">
+                >
+                ["at0017"] = <
+                    text = <"Comment">
+                    description = <"Additional narrative about the risk assessment">
+                >
+                ["at0018"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0019"] = <
+                    text = <"Assessment Tool">
+                    description = <"Name of the assessment tool or scoring system used">
+                >
+            >
+        >
+    >

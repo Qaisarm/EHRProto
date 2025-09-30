@@ -1,0 +1,217 @@
+archetype (adl_version=1.4; uid=9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f)
+    openEHR-EHR-ADMIN_ENTRY.admission.v1
+
+concept
+    [at0000]    -- Hospital Admission
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Administrative Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"admin@example.com">
+        ["date"] = <"2025-09-30">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"To record administrative details about a patient's hospital admission">
+            use = <"Use to record admission details including admission date, source, type, and ward allocation">
+            keywords = <"admission", "hospital", "inpatient", "ward", "admission date">
+            misuse = <"Not to be used for clinical information - use appropriate clinical archetypes instead">
+        >
+    >
+    lifecycle_state = <"draft">
+    other_details = <
+        ["MD5-CAM-1.0.1"] = <"I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4">
+    >
+
+definition
+    ADMIN_ENTRY[at0000] matches {    -- Hospital Admission
+        data matches {
+            ITEM_TREE[at0001] matches {    -- Tree
+                items cardinality matches {1..*; unordered} matches {
+                    ELEMENT[at0002] matches {    -- Admission Date/Time
+                        value matches {
+                            DV_DATE_TIME matches {*}
+                        }
+                    }
+                    ELEMENT[at0003] occurrences matches {0..1} matches {    -- Admission Type
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0004,    -- Emergency
+                                    at0005,    -- Elective
+                                    at0006,    -- Transfer
+                                    at0007]    -- Maternity
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0008] occurrences matches {0..1} matches {    -- Admission Source
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0009,    -- Emergency Department
+                                    at0010,    -- Outpatient Clinic
+                                    at0011,    -- Transfer from Another Hospital
+                                    at0012,    -- Home
+                                    at0013]    -- Other
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0014] occurrences matches {0..1} matches {    -- Ward/Unit
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0015] occurrences matches {0..1} matches {    -- Bed Number
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0016] occurrences matches {0..1} matches {    -- Admission Reason
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0017] occurrences matches {0..1} matches {    -- Admitting Physician
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0018] occurrences matches {0..1} matches {    -- Expected Length of Stay
+                        value matches {
+                            DV_DURATION matches {*}
+                        }
+                    }
+                    ELEMENT[at0019] occurrences matches {0..1} matches {    -- Admission Status
+                        value matches {
+                            DV_CODED_TEXT matches {
+                                defining_code matches {
+                                    [local::
+                                    at0020,    -- Admitted
+                                    at0021,    -- Pending
+                                    at0022]    -- Cancelled
+                                }
+                            }
+                        }
+                    }
+                    ELEMENT[at0023] occurrences matches {0..1} matches {    -- Comment
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Hospital Admission">
+                    description = <"Administrative details about a patient's hospital admission">
+                >
+                ["at0001"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002"] = <
+                    text = <"Admission Date/Time">
+                    description = <"Date and time of admission">
+                >
+                ["at0003"] = <
+                    text = <"Admission Type">
+                    description = <"Type of admission">
+                >
+                ["at0004"] = <
+                    text = <"Emergency">
+                    description = <"Emergency admission">
+                >
+                ["at0005"] = <
+                    text = <"Elective">
+                    description = <"Planned elective admission">
+                >
+                ["at0006"] = <
+                    text = <"Transfer">
+                    description = <"Transfer from another facility">
+                >
+                ["at0007"] = <
+                    text = <"Maternity">
+                    description = <"Maternity admission">
+                >
+                ["at0008"] = <
+                    text = <"Admission Source">
+                    description = <"Source from which the patient was admitted">
+                >
+                ["at0009"] = <
+                    text = <"Emergency Department">
+                    description = <"Admitted from emergency department">
+                >
+                ["at0010"] = <
+                    text = <"Outpatient Clinic">
+                    description = <"Admitted from outpatient clinic">
+                >
+                ["at0011"] = <
+                    text = <"Transfer from Another Hospital">
+                    description = <"Transferred from another hospital">
+                >
+                ["at0012"] = <
+                    text = <"Home">
+                    description = <"Admitted from home">
+                >
+                ["at0013"] = <
+                    text = <"Other">
+                    description = <"Other admission source">
+                >
+                ["at0014"] = <
+                    text = <"Ward/Unit">
+                    description = <"Ward or unit where patient is admitted">
+                >
+                ["at0015"] = <
+                    text = <"Bed Number">
+                    description = <"Bed number assigned to the patient">
+                >
+                ["at0016"] = <
+                    text = <"Admission Reason">
+                    description = <"Reason for admission">
+                >
+                ["at0017"] = <
+                    text = <"Admitting Physician">
+                    description = <"Physician responsible for the admission">
+                >
+                ["at0018"] = <
+                    text = <"Expected Length of Stay">
+                    description = <"Expected duration of hospital stay">
+                >
+                ["at0019"] = <
+                    text = <"Admission Status">
+                    description = <"Current status of the admission">
+                >
+                ["at0020"] = <
+                    text = <"Admitted">
+                    description = <"Patient has been admitted">
+                >
+                ["at0021"] = <
+                    text = <"Pending">
+                    description = <"Admission is pending">
+                >
+                ["at0022"] = <
+                    text = <"Cancelled">
+                    description = <"Admission has been cancelled">
+                >
+                ["at0023"] = <
+                    text = <"Comment">
+                    description = <"Additional comments about the admission">
+                >
+            >
+        >
+    >
