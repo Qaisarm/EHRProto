@@ -33,51 +33,154 @@ Proto/
 
 ## Getting Started
 
+This repository provides two applications:
+1. **Clinical Application** - Full-featured UX/UI for managing clinical data
+2. **Template Viewer** - Browse and view all OpenEHR archetype definitions
+
+---
+
 ### 🎯 Option 1: Clinical Application (Full UX/UI)
 
-**Launch the complete clinical data system with forms and data management:**
+**Launch the complete clinical data system with interactive forms and data management:**
 
+#### Step 1: Navigate to the app directory
 ```bash
 cd /path/to/your/Proto/app
+# Example: cd ~/Downloads/Proto/app or cd ~/Documents/EHRProto/app
+```
+
+#### Step 2: Launch the application
+```bash
 ./launch_app.sh
 ```
 
-This opens a full-featured clinical application with:
-- Patient management
-- Vital signs recording
-- Lab orders and results
-- Medication prescriptions
-- Clinical notes
-- Imaging orders
-- Data export/import
+**Or manually:**
+```bash
+# Start web server
+python3 -m http.server 8080
+
+# Open in browser
+open http://localhost:8080/index.html
+```
+
+#### What You Get:
+- ✅ **Patient Management** - Register and manage patients
+- ✅ **Vital Signs Recording** - BP, HR, Temperature, SpO2, Respiratory Rate
+- ✅ **Lab Orders & Results** - Order tests, view results with interpretations
+- ✅ **Medication Prescriptions** - Prescribe with dosage, route, frequency
+- ✅ **Clinical Notes** - Progress notes, consultations, discharge summaries
+- ✅ **Imaging Orders** - X-Ray, CT, MRI, Ultrasound orders
+- ✅ **Data Export/Import** - JSON, CSV, OpenEHR XML formats
+- ✅ **Dashboard** - Statistics, appointments, alerts
+- ✅ **Search & Filter** - Find patients and records quickly
+
+**Keyboard Shortcuts:**
+- `Ctrl/Cmd + N` - New Patient
+- `Ctrl/Cmd + E` - Export Data
+- `Escape` - Close Modal
 
 [📖 Full App Documentation](app/README.md)
 
-### 📚 Option 2: Archetype Viewer
+---
 
-**View and browse all archetype definitions:**
+### 📚 Option 2: Template Viewer (Browse Archetypes)
 
-First, navigate to where you downloaded/cloned this repository:
+**View and browse all 16 OpenEHR archetype definitions:**
+
+#### Step 1: Navigate to the repository root
 ```bash
 cd /path/to/your/Proto
 # Example: cd ~/Downloads/Proto or cd ~/Documents/EHRProto
 ```
 
-**Interactive Web Viewer:**
+#### Step 2: Launch the viewer
 ```bash
-# Launch the interactive viewer
 ./launch_viewer.sh
 ```
-This will start a local web server and open the archetype viewer in your browser.
 
-**Manual Launch:**
+**Or manually:**
 ```bash
-# Start a web server
+# Start web server
 python3 -m http.server 8000
 
 # Open in browser
 open http://localhost:8000/viewer.html
 ```
+
+#### What You Get:
+- 📄 Browse all 16 archetypes by category
+- 🔍 View ADL code with syntax highlighting
+- 📋 Copy to clipboard functionality
+- 💾 Download individual archetype files
+- 📊 Metadata display (category, format, size)
+- 🔗 Links to online OpenEHR tools
+
+**Categories Available:**
+- COMPOSITION (3) - Clinical documents
+- OBSERVATION (2) - Vital signs, lab results
+- EVALUATION (2) - Diagnoses, risk assessments
+- INSTRUCTION (2) - Medication orders, service requests
+- ACTION (2) - Medication admin, procedures
+- ADMIN_ENTRY (2) - Admission, discharge
+- CLUSTER (3) - Patient data, demographics
+
+[📖 Viewer Usage Guide](USAGE_GUIDE.md)
+
+---
+
+### 🚀 Quick Start Summary
+
+| Task | Command | URL |
+|------|---------|-----|
+| **Launch Clinical App** | `cd app && ./launch_app.sh` | http://localhost:8080/index.html |
+| **Launch Template Viewer** | `./launch_viewer.sh` | http://localhost:8000/viewer.html |
+| **View Archetype Files** | `cat archetypes/observation/*.adl` | - |
+| **Export Data** | Press `Ctrl/Cmd + E` in app | - |
+
+---
+
+### 📋 Prerequisites
+
+- **Python 3** (for local web server)
+- **Modern Web Browser** (Chrome, Firefox, Safari, Edge)
+- **No installation required** - Pure HTML/CSS/JavaScript
+
+**Check Python:**
+```bash
+python3 --version
+# Should show Python 3.x.x
+```
+
+**Install Python (if needed):**
+- **macOS**: `brew install python3`
+- **Linux**: `sudo apt install python3`
+- **Windows**: Download from https://python.org
+
+---
+
+### 🔧 Troubleshooting
+
+#### Port Already in Use
+Both launch scripts automatically find available ports if default ports are busy.
+
+#### Permission Denied
+```bash
+chmod +x launch_app.sh
+chmod +x launch_viewer.sh
+```
+
+#### Python Not Found
+Install Python 3 or use alternative web server:
+```bash
+# Using Node.js
+npx http-server -p 8080
+
+# Using PHP
+php -S localhost:8080
+```
+
+#### Browser Doesn't Open
+Manually navigate to the URLs shown in the terminal output.
 
 ### Using OpenEHR Tools
 

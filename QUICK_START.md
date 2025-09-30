@@ -1,6 +1,41 @@
 # 🚀 Quick Start Guide
 
-## View All Templates in 3 Easy Steps
+This repository has **TWO applications**. Choose what you need:
+
+---
+
+## 🏥 Option A: Clinical Application (Full System)
+
+**Use this to actually work with patient data, record vitals, prescribe medications, etc.**
+
+### Step 1: Navigate to the app directory
+```bash
+cd /path/to/your/Proto/app
+# Example: cd ~/Downloads/Proto/app
+```
+
+### Step 2: Launch the application
+```bash
+./launch_app.sh
+```
+
+### Step 3: Use the System!
+The application opens at `http://localhost:8080/index.html`
+
+**What you can do:**
+- Register patients
+- Record vital signs
+- Order lab tests
+- Prescribe medications
+- Write clinical notes
+- Order imaging studies
+- Export/import data
+
+---
+
+## 📚 Option B: Template Viewer (Browse Archetypes)
+
+**Use this to view and explore the OpenEHR archetype definitions.**
 
 ### Step 1: Navigate to the Repository
 ```bash
@@ -14,7 +49,13 @@ cd /path/to/your/Proto
 ```
 
 ### Step 3: Browse!
-The viewer will automatically open in your browser at `http://localhost:8000/viewer.html`
+The viewer opens at `http://localhost:8000/viewer.html`
+
+**What you can do:**
+- Browse all 16 archetypes
+- View ADL code
+- Copy to clipboard
+- Download files
 
 ---
 
