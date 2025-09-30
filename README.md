@@ -33,7 +33,29 @@ Proto/
 
 ## Getting Started
 
-### Quick Start - View Archetypes Locally
+### 🎯 Option 1: Clinical Application (Full UX/UI)
+
+**Launch the complete clinical data system with forms and data management:**
+
+```bash
+cd /path/to/your/Proto/app
+./launch_app.sh
+```
+
+This opens a full-featured clinical application with:
+- Patient management
+- Vital signs recording
+- Lab orders and results
+- Medication prescriptions
+- Clinical notes
+- Imaging orders
+- Data export/import
+
+[📖 Full App Documentation](app/README.md)
+
+### 📚 Option 2: Archetype Viewer
+
+**View and browse all archetype definitions:**
 
 First, navigate to where you downloaded/cloned this repository:
 ```bash
@@ -41,14 +63,14 @@ cd /path/to/your/Proto
 # Example: cd ~/Downloads/Proto or cd ~/Documents/EHRProto
 ```
 
-**Option 1: Interactive Web Viewer (Recommended)**
+**Interactive Web Viewer:**
 ```bash
 # Launch the interactive viewer
 ./launch_viewer.sh
 ```
 This will start a local web server and open the archetype viewer in your browser.
 
-**Option 2: Manual Launch**
+**Manual Launch:**
 ```bash
 # Start a web server
 python3 -m http.server 8000

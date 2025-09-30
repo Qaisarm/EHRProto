@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenEHR Clinical Data System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-hospital"></i>
+            <span>OpenEHR Clinical System</span>
+        </div>
+        <div class="nav-menu">
+            <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </a>
+            <a href="#patients" class="nav-link" data-page="patients">
+                <i class="fas fa-users"></i> Patients
+            </a>
+            <a href="#clinical" class="nav-link" data-page="clinical">
+                <i class="fas fa-stethoscope"></i> Clinical Records
+            </a>
+            <a href="#medications" class="nav-link" data-page="medications">
+                <i class="fas fa-pills"></i> Medications
+            </a>
+            <a href="#lab" class="nav-link" data-page="lab">
+                <i class="fas fa-flask"></i> Laboratory
+            </a>
+            <a href="#imaging" class="nav-link" data-page="imaging">
+                <i class="fas fa-x-ray"></i> Imaging
+            </a>
+        </div>
+        <div class="nav-user">
+            <i class="fas fa-user-circle"></i>
+            <span>Dr. Smith</span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Quick Actions</h3>
+                <button class="sidebar-btn" onclick="app.showModal('newPatient')">
+                    <i class="fas fa-user-plus"></i> New Patient
+                </button>
+                <button class="sidebar-btn" onclick="app.showModal('vitalSigns')">
+                    <i class="fas fa-heartbeat"></i> Record Vitals
+                </button>
+                <button class="sidebar-btn" onclick="app.showModal('labOrder')">
+                    <i class="fas fa-vial"></i> Order Lab Test
+                </button>
+                <button class="sidebar-btn" onclick="app.showModal('medication')">
+                    <i class="fas fa-prescription"></i> Prescribe Medication
+                </button>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Recent Activity</h3>
+                <div class="activity-list" id="recentActivity">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content" id="mainContent">
+            <!-- Dashboard Page (Default) -->
+            <div id="page-dashboard" class="page active">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p>Overview of clinical activities and patient data</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-patients">0</h3>
+                            <p>Total Patients</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-vitals">0</h3>
+                            <p>Vital Signs Recorded</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-labs">0</h3>
+                            <p>Lab Tests</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-meds">0</h3>
+                            <p>Active Medications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h2><i class="fas fa-calendar-check"></i> Today's Appointments</h2>
+                        <div id="todayAppointments" class="appointment-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h2><i class="fas fa-exclamation-triangle"></i> Alerts & Reminders</h2>
+                        <div id="alerts" class="alert-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patients Page -->
+            <div id="page-patients" class="page">
+                <div class="page-header">
+                    <h1>Patient Management</h1>
+                    <button class="btn btn-primary" onclick="app.showModal('newPatient')">
+                        <i class="fas fa-plus"></i> Add New Patient
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="patientSearch" placeholder="Search patients by name, ID, or phone..." onkeyup="app.searchPatients()">
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Contact</th>
+                                <th>Last Visit</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientsTable">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Clinical Records Page -->
+            <div id="page-clinical" class="page">
+                <div class="page-header">
+                    <h1>Clinical Records</h1>
+                    <button class="btn btn-primary" onclick="app.showModal('clinicalNote')">
+                        <i class="fas fa-plus"></i> New Clinical Note
+                    </button>
+                </div>
+                
+                <div class="records-grid" id="clinicalRecords">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Medications Page -->
+            <div id="page-medications" class="page">
+                <div class="page-header">
+                    <h1>Medication Management</h1>
+                    <button class="btn btn-primary" onclick="app.showModal('medication')">
+                        <i class="fas fa-plus"></i> Prescribe Medication
+                    </button>
+                </div>
+                
+                <div class="medications-list" id="medicationsList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Laboratory Page -->
+            <div id="page-lab" class="page">
+                <div class="page-header">
+                    <h1>Laboratory Tests</h1>
+                    <button class="btn btn-primary" onclick="app.showModal('labOrder')">
+                        <i class="fas fa-plus"></i> Order Lab Test
+                    </button>
+                </div>
+                
+                <div class="lab-results" id="labResults">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Imaging Page -->
+            <div id="page-imaging" class="page">
+                <div class="page-header">
+                    <h1>Radiology & Imaging</h1>
+                    <button class="btn btn-primary" onclick="app.showModal('imagingOrder')">
+                        <i class="fas fa-plus"></i> Order Imaging Study
+                    </button>
+                </div>
+                
+                <div class="imaging-list" id="imagingList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modalsContainer"></div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="forms.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>
