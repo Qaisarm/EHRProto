@@ -1,6 +1,24 @@
-# OpenEHR Healthcare Templates
+# 🏥 OpenEHR Healthcare System
 
-This project contains OpenEHR archetypes and templates for healthcare workflows including patient registration, radiology, and clinical consultations.
+Complete clinical data management system with OpenEHR archetypes and templates for healthcare workflows.
+
+## 🎯 What's Included
+
+This repository provides **TWO applications**:
+
+1. **🏥 Clinical Application** - Full-featured UX/UI for managing patient data, recording vitals, ordering tests, prescribing medications, and more
+2. **📚 Template Viewer** - Interactive browser for viewing and exploring all 16 OpenEHR archetype definitions
+
+**Quick Launch:**
+```bash
+# Clinical App
+cd app && ./launch_app.sh
+
+# Template Viewer
+./launch_viewer.sh
+```
+
+[📖 Detailed Launch Instructions](HOW_TO_LAUNCH.md)
 
 ## Project Structure
 
