@@ -1,0 +1,1101 @@
+archetype (adl_version=1.4; uid=8a4b5c6d-e7f8-4a9b-a1b2-c3d4e5f67890)
+    openEHR-EHR-COMPOSITION.xray_laboratory.v1
+
+concept
+    [at0000]    -- X-ray Laboratory
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["name"] = <"Laboratory Team">
+        ["organisation"] = <"Healthcare Organization">
+        ["email"] = <"lab@example.com">
+    >
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"Template for X-ray laboratory operations and reporting">
+            use = <"To document X-ray laboratory setup, equipment, procedures, quality control, and test results">
+            keywords = <"radiology", "laboratory", "X-ray", "imaging", "quality control", "equipment", "procedures">
+        >
+    >
+    lifecycle_state = <"draft">
+
+definition
+    COMPOSITION[at0000] matches {    -- X-ray Laboratory
+        category matches {
+            DV_CODED_TEXT matches {
+                defining_code matches {[openehr::433]}
+            }
+        }
+
+        context matches {
+            EVENT_CONTEXT matches {
+                other_context matches {
+                    ITEM_TREE[at0100] matches {
+                        items cardinality matches {0..*; unordered} matches {
+                            ELEMENT[at0001] matches {    -- Laboratory ID
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0002] matches {    -- Report Type
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0003] matches {    -- Report Date/Time
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        content matches {
+            -- Laboratory Information
+            SECTION[at0010] matches {    -- Laboratory Information
+                items cardinality matches {1..*; ordered} matches {
+                    ELEMENT[at0011] matches {    -- Laboratory Name
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0012] matches {    -- Laboratory Director
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0013] matches {    -- Accreditation Status
+                        value matches {
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0014] matches {    -- Accreditation Body
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0015] matches {    -- License Number
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0016] matches {    -- Address
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0017] matches {    -- Contact Information
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0018] matches {    -- Operating Hours
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+
+            -- Equipment Inventory
+            SECTION[at0020] matches {    -- Equipment Inventory
+                items cardinality matches {1..*; ordered} matches {
+                    CLUSTER[at0021] matches {    -- X-ray Equipment
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0022] matches {    -- Equipment Type
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0023] matches {    -- Manufacturer
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0024] matches {    -- Model
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0025] matches {    -- Serial Number
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0026] matches {    -- Installation Date
+                                value matches {
+                                    DV_DATE matches {*}
+                                }
+                            }
+                            ELEMENT[at0027] matches {    -- Last Calibration Date
+                                value matches {
+                                    DV_DATE matches {*}
+                                }
+                            }
+                            ELEMENT[at0028] matches {    -- Next Calibration Due
+                                value matches {
+                                    DV_DATE matches {*}
+                                }
+                            }
+                            ELEMENT[at0029] matches {    -- Equipment Status
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            -- Quality Control Procedures
+            SECTION[at0030] matches {    -- Quality Control Procedures
+                items cardinality matches {1..*; ordered} matches {
+                    CLUSTER[at0031] matches {    -- QC Protocol
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0032] matches {    -- Protocol Name
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0033] matches {    -- Frequency
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0034] matches {    -- Last Performed
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                            ELEMENT[at0035] matches {    -- Next Due
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                            ELEMENT[at0036] matches {    -- Performed By
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0037] matches {    -- Results
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0038] matches {    -- Comments
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            -- Radiation Safety
+            SECTION[at0040] matches {    -- Radiation Safety
+                items cardinality matches {1..*; ordered} matches {
+                    ELEMENT[at0041] matches {    -- Radiation Safety Officer
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0042] matches {    -- RSO Certification Number
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0043] matches {    -- Lead Apron Inventory
+                        value matches {
+                            DV_COUNT matches {
+                                magnitude matches {|0..1000|}
+                            }
+                        }
+                    }
+                    ELEMENT[at0044] matches {    -- Dosimeter Monitoring
+                        value matches {
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                    ELEMENT[at0045] matches {    -- Area Monitoring Results
+                        value matches {
+                            DV_QUANTITY matches {
+                                magnitude matches {|0.0..1000.0|}
+                                property matches {[openehr::131]}
+                                units matches {"mSv/h", "µSv/h"}
+                            }
+                        }
+                    }
+                    ELEMENT[at0046] matches {    -- Safety Training Completed
+                        value matches {
+                            DV_DATE matches {*}
+                        }
+                    }
+                    ELEMENT[at0047] matches {    -- Emergency Procedures Posted
+                        value matches {
+                            DV_CODED_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+
+            -- Test Results and Reports
+            SECTION[at0050] matches {    -- Test Results and Reports
+                items cardinality matches {0..*; ordered} matches {
+                    CLUSTER[at0051] matches {    -- Imaging Study
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0052] matches {    -- Study ID
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0053] matches {    -- Patient ID
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0054] matches {    -- Study Date/Time
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                            ELEMENT[at0055] matches {    -- Study Type
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0056] matches {    -- Body Part
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0057] matches {    -- Views/Sequences
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0058] matches {    -- Radiation Dose
+                                value matches {
+                                    DV_QUANTITY matches {
+                                        magnitude matches {|0.0..100.0|}
+                                        property matches {[openehr::131]}
+                                        units matches {"mGy", "Gy"}
+                                    }
+                                }
+                            }
+                            ELEMENT[at0059] matches {    -- Contrast Used
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0060] matches {    -- Study Status
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0061] matches {    -- Preliminary Report
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0062] matches {    -- Final Report
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            -- Staff Information
+            SECTION[at0070] matches {    -- Staff Information
+                items cardinality matches {1..*; ordered} matches {
+                    CLUSTER[at0071] matches {    -- Radiologic Technologist
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0072] matches {    -- Staff ID
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0073] matches {    -- Name
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0074] matches {    -- Certification
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0075] matches {    -- Certification Number
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0076] matches {    -- License Expiry
+                                value matches {
+                                    DV_DATE matches {*}
+                                }
+                            }
+                            ELEMENT[at0077] matches {    -- Specialties
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0078] matches {    -- Shift Assignment
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            -- Daily Operations Log
+            SECTION[at0080] matches {    -- Daily Operations Log
+                items cardinality matches {0..*; ordered} matches {
+                    ELEMENT[at0081] matches {    -- Total Studies Performed
+                        value matches {
+                            DV_COUNT matches {
+                                magnitude matches {|0..1000|}
+                            }
+                        }
+                    }
+                    ELEMENT[at0082] matches {    -- Equipment Utilization Rate
+                        value matches {
+                            DV_QUANTITY matches {
+                                magnitude matches {|0.0..100.0|}
+                                property matches {[openehr::129]}
+                                units matches {"%"}
+                            }
+                        }
+                    }
+                    ELEMENT[at0083] matches {    -- Average Study Duration
+                        value matches {
+                            DV_DURATION matches {*}
+                        }
+                    }
+                    ELEMENT[at0084] matches {    -- Patient Wait Time
+                        value matches {
+                            DV_DURATION matches {*}
+                        }
+                    }
+                    ELEMENT[at0085] matches {    -- Emergency Studies
+                        value matches {
+                            DV_COUNT matches {
+                                magnitude matches {|0..100|}
+                            }
+                        }
+                    }
+                    ELEMENT[at0086] matches {    -- Repeat Studies
+                        value matches {
+                            DV_COUNT matches {
+                                magnitude matches {|0..50|}
+                            }
+                        }
+                    }
+                    ELEMENT[at0087] matches {    -- Repeat Rate
+                        value matches {
+                            DV_QUANTITY matches {
+                                magnitude matches {|0.0..50.0|}
+                                property matches {[openehr::129]}
+                                units matches {"%"}
+                            }
+                        }
+                    }
+                    ELEMENT[at0088] matches {    -- Operational Issues
+                        value matches {
+                            DV_TEXT matches {*}
+                        }
+                    }
+                }
+            }
+
+            -- Incident Reports
+            SECTION[at0090] matches {    -- Incident Reports
+                items cardinality matches {0..*; ordered} matches {
+                    CLUSTER[at0091] matches {    -- Incident Record
+                        items cardinality matches {1..*; unordered} matches {
+                            ELEMENT[at0092] matches {    -- Incident ID
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0093] matches {    -- Incident Date/Time
+                                value matches {
+                                    DV_DATE_TIME matches {*}
+                                }
+                            }
+                            ELEMENT[at0094] matches {    -- Incident Type
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0095] matches {    -- Severity
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0096] matches {    -- Description
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0097] matches {    -- Immediate Actions
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0098] matches {    -- Follow-up Required
+                                value matches {
+                                    DV_CODED_TEXT matches {*}
+                                }
+                            }
+                            ELEMENT[at0099] matches {    -- Reported To
+                                value matches {
+                                    DV_TEXT matches {*}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"X-ray Laboratory">
+                    description = <"Template for X-ray laboratory operations and reporting">
+                >
+                ["at0001"] = <
+                    text = <"Laboratory ID">
+                    description = <"Unique identifier for the laboratory">
+                >
+                ["at0002"] = <
+                    text = <"Report Type">
+                    description = <"Type of report being generated">
+                >
+                ["at0100"] = <
+                    text = <"Tree">
+                    description = <"@ internal @">
+                >
+                ["at0002.1"] = <
+                    text = <"Daily Operations">
+                    description = <"Daily operational summary">
+                >
+                ["at0002.2"] = <
+                    text = <"Quality Control">
+                    description = <"Quality control assessment">
+                >
+                ["at0002.3"] = <
+                    text = <"Equipment Maintenance">
+                    description = <"Equipment maintenance report">
+                >
+                ["at0002.4"] = <
+                    text = <"Test Results">
+                    description = <"Imaging study results">
+                >
+                ["at0002.5"] = <
+                    text = <"Incident Report">
+                    description = <"Incident or safety report">
+                >
+                ["at0003"] = <
+                    text = <"Report Date/Time">
+                    description = <"Date and time of report generation">
+                >
+                ["at0010"] = <
+                    text = <"Laboratory Information">
+                    description = <"General information about the laboratory">
+                >
+                ["at0011"] = <
+                    text = <"Laboratory Name">
+                    description = <"Official name of the laboratory">
+                >
+                ["at0012"] = <
+                    text = <"Laboratory Director">
+                    description = <"Name of the laboratory director">
+                >
+                ["at0013"] = <
+                    text = <"Accreditation Status">
+                    description = <"Current accreditation status">
+                >
+                ["at0013.1"] = <
+                    text = <"Accredited">
+                    description = <"Fully accredited">
+                >
+                ["at0013.2"] = <
+                    text = <"Provisional">
+                    description = <"Provisionally accredited">
+                >
+                ["at0013.3"] = <
+                    text = <"Not Accredited">
+                    description = <"Not currently accredited">
+                >
+                ["at0013.4"] = <
+                    text = <"Under Review">
+                    description = <"Accreditation under review">
+                >
+                ["at0014"] = <
+                    text = <"Accreditation Body">
+                    description = <"Name of accrediting organization">
+                >
+                ["at0015"] = <
+                    text = <"License Number">
+                    description = <"Official license number">
+                >
+                ["at0016"] = <
+                    text = <"Address">
+                    description = <"Physical address of laboratory">
+                >
+                ["at0017"] = <
+                    text = <"Contact Information">
+                    description = <"Contact details for laboratory">
+                >
+                ["at0018"] = <
+                    text = <"Operating Hours">
+                    description = <"Normal operating hours">
+                >
+                ["at0020"] = <
+                    text = <"Equipment Inventory">
+                    description = <"Inventory of X-ray equipment">
+                >
+                ["at0021"] = <
+                    text = <"X-ray Equipment">
+                    description = <"Details of X-ray equipment">
+                >
+                ["at0022"] = <
+                    text = <"Equipment Type">
+                    description = <"Type of X-ray equipment">
+                >
+                ["at0022.1"] = <
+                    text = <"Radiography System">
+                    description = <"General radiography system">
+                >
+                ["at0022.2"] = <
+                    text = <"Fluoroscopy System">
+                    description = <"Fluoroscopy imaging system">
+                >
+                ["at0022.3"] = <
+                    text = <"CT Scanner">
+                    description = <"Computed tomography scanner">
+                >
+                ["at0022.4"] = <
+                    text = <"Mammography Unit">
+                    description = <"Mammography imaging unit">
+                >
+                ["at0022.5"] = <
+                    text = <"Dental X-ray">
+                    description = <"Dental radiography equipment">
+                >
+                ["at0022.6"] = <
+                    text = <"Portable X-ray">
+                    description = <"Portable X-ray equipment">
+                >
+                ["at0022.7"] = <
+                    text = <"Other">
+                    description = <"Other type of equipment">
+                >
+                ["at0023"] = <
+                    text = <"Manufacturer">
+                    description = <"Equipment manufacturer">
+                >
+                ["at0024"] = <
+                    text = <"Model">
+                    description = <"Equipment model">
+                >
+                ["at0025"] = <
+                    text = <"Serial Number">
+                    description = <"Equipment serial number">
+                >
+                ["at0026"] = <
+                    text = <"Installation Date">
+                    description = <"Date equipment was installed">
+                >
+                ["at0027"] = <
+                    text = <"Last Calibration Date">
+                    description = <"Date of last calibration">
+                >
+                ["at0028"] = <
+                    text = <"Next Calibration Due">
+                    description = <"Date next calibration is due">
+                >
+                ["at0029"] = <
+                    text = <"Equipment Status">
+                    description = <"Current operational status">
+                >
+                ["at0029.1"] = <
+                    text = <"Operational">
+                    description = <"Equipment is operational">
+                >
+                ["at0029.2"] = <
+                    text = <"Maintenance Required">
+                    description = <"Maintenance is required">
+                >
+                ["at0029.3"] = <
+                    text = <"Out of Service">
+                    description = <"Equipment is out of service">
+                >
+                ["at0029.4"] = <
+                    text = <"Decommissioned">
+                    description = <"Equipment is decommissioned">
+                >
+                ["at0030"] = <
+                    text = <"Quality Control Procedures">
+                    description = <"Quality control protocols and results">
+                >
+                ["at0031"] = <
+                    text = <"QC Protocol">
+                    description = <"Quality control protocol details">
+                >
+                ["at0032"] = <
+                    text = <"Protocol Name">
+                    description = <"Name of QC protocol">
+                >
+                ["at0033"] = <
+                    text = <"Frequency">
+                    description = <"How often protocol is performed">
+                >
+                ["at0033.1"] = <
+                    text = <"Daily">
+                    description = <"Performed daily">
+                >
+                ["at0033.2"] = <
+                    text = <"Weekly">
+                    description = <"Performed weekly">
+                >
+                ["at0033.3"] = <
+                    text = <"Monthly">
+                    description = <"Performed monthly">
+                >
+                ["at0033.4"] = <
+                    text = <"Quarterly">
+                    description = <"Performed quarterly">
+                >
+                ["at0033.5"] = <
+                    text = <"Annually">
+                    description = <"Performed annually">
+                >
+                ["at0033.6"] = <
+                    text = <"As Needed">
+                    description = <"Performed as needed">
+                >
+                ["at0034"] = <
+                    text = <"Last Performed">
+                    description = <"Date last performed">
+                >
+                ["at0035"] = <
+                    text = <"Next Due">
+                    description = <"Date next due">
+                >
+                ["at0036"] = <
+                    text = <"Performed By">
+                    description = <"Who performed the QC">
+                >
+                ["at0037"] = <
+                    text = <"Results">
+                    description = <"QC test results">
+                >
+                ["at0037.1"] = <
+                    text = <"Pass">
+                    description = <"QC test passed">
+                >
+                ["at0037.2"] = <
+                    text = <"Fail">
+                    description = <"QC test failed">
+                >
+                ["at0037.3"] = <
+                    text = <"Conditional Pass">
+                    description = <"QC test conditionally passed">
+                >
+                ["at0037.4"] = <
+                    text = <"Not Performed">
+                    description = <"QC test not performed">
+                >
+                ["at0038"] = <
+                    text = <"Comments">
+                    description = <"Additional comments">
+                >
+                ["at0040"] = <
+                    text = <"Radiation Safety">
+                    description = <"Radiation safety protocols and monitoring">
+                >
+                ["at0041"] = <
+                    text = <"Radiation Safety Officer">
+                    description = <"Name of radiation safety officer">
+                >
+                ["at0042"] = <
+                    text = <"RSO Certification Number">
+                    description = <"RSO certification number">
+                >
+                ["at0043"] = <
+                    text = <"Lead Apron Inventory">
+                    description = <"Number of lead aprons available">
+                >
+                ["at0044"] = <
+                    text = <"Dosimeter Monitoring">
+                    description = <"Status of dosimeter monitoring">
+                >
+                ["at0044.1"] = <
+                    text = <"Active">
+                    description = <"Monitoring is active">
+                >
+                ["at0044.2"] = <
+                    text = <"Inactive">
+                    description = <"Monitoring is inactive">
+                >
+                ["at0044.3"] = <
+                    text = <"Under Review">
+                    description = <"Monitoring under review">
+                >
+                ["at0045"] = <
+                    text = <"Area Monitoring Results">
+                    description = <"Radiation monitoring results">
+                >
+                ["at0046"] = <
+                    text = <"Safety Training Completed">
+                    description = <"Date of last safety training">
+                >
+                ["at0047"] = <
+                    text = <"Emergency Procedures Posted">
+                    description = <"Status of emergency procedures">
+                >
+                ["at0047.1"] = <
+                    text = <"Yes">
+                    description = <"Procedures are posted">
+                >
+                ["at0047.2"] = <
+                    text = <"No">
+                    description = <"Procedures not posted">
+                >
+                ["at0047.3"] = <
+                    text = <"Partial">
+                    description = <"Procedures partially posted">
+                >
+                ["at0050"] = <
+                    text = <"Test Results and Reports">
+                    description = <"Imaging study results and reports">
+                >
+                ["at0051"] = <
+                    text = <"Imaging Study">
+                    description = <"Details of imaging study">
+                >
+                ["at0052"] = <
+                    text = <"Study ID">
+                    description = <"Unique study identifier">
+                >
+                ["at0053"] = <
+                    text = <"Patient ID">
+                    description = <"Patient identifier">
+                >
+                ["at0054"] = <
+                    text = <"Study Date/Time">
+                    description = <"Date and time of study">
+                >
+                ["at0055"] = <
+                    text = <"Study Type">
+                    description = <"Type of imaging study">
+                >
+                ["at0055.1"] = <
+                    text = <"Radiograph">
+                    description = <"Plain radiograph">
+                >
+                ["at0055.2"] = <
+                    text = <"Fluoroscopy">
+                    description = <"Fluoroscopic examination">
+                >
+                ["at0055.3"] = <
+                    text = <"CT Scan">
+                    description = <"Computed tomography scan">
+                >
+                ["at0055.4"] = <
+                    text = <"Mammogram">
+                    description = <"Mammography examination">
+                >
+                ["at0055.5"] = <
+                    text = <"Dental">
+                    description = <"Dental imaging">
+                >
+                ["at0055.6"] = <
+                    text = <"Other">
+                    description = <"Other type of study">
+                >
+                ["at0056"] = <
+                    text = <"Body Part">
+                    description = <"Body part examined">
+                >
+                ["at0057"] = <
+                    text = <"Views/Sequences">
+                    description = <"Views or sequences obtained">
+                >
+                ["at0058"] = <
+                    text = <"Radiation Dose">
+                    description = <"Radiation dose delivered">
+                >
+                ["at0059"] = <
+                    text = <"Contrast Used">
+                    description = <"Whether contrast was used">
+                >
+                ["at0059.1"] = <
+                    text = <"Yes">
+                    description = <"Contrast was used">
+                >
+                ["at0059.2"] = <
+                    text = <"No">
+                    description = <"Contrast not used">
+                >
+                ["at0059.3"] = <
+                    text = <"Not Applicable">
+                    description = <"Contrast not applicable">
+                >
+                ["at0060"] = <
+                    text = <"Study Status">
+                    description = <"Current status of study">
+                >
+                ["at0060.1"] = <
+                    text = <"Completed">
+                    description = <"Study completed">
+                >
+                ["at0060.2"] = <
+                    text = <"In Progress">
+                    description = <"Study in progress">
+                >
+                ["at0060.3"] = <
+                    text = <"Cancelled">
+                    description = <"Study cancelled">
+                >
+                ["at0060.4"] = <
+                    text = <"Repeated">
+                    description = <"Study repeated">
+                >
+                ["at0060.5"] = <
+                    text = <"Rejected">
+                    description = <"Study rejected">
+                >
+                ["at0061"] = <
+                    text = <"Preliminary Report">
+                    description = <"Preliminary findings">
+                >
+                ["at0062"] = <
+                    text = <"Final Report">
+                    description = <"Final interpretation">
+                >
+                ["at0070"] = <
+                    text = <"Staff Information">
+                    description = <"Information about laboratory staff">
+                >
+                ["at0071"] = <
+                    text = <"Radiologic Technologist">
+                    description = <"Details of radiologic technologist">
+                >
+                ["at0072"] = <
+                    text = <"Staff ID">
+                    description = <"Staff identifier">
+                >
+                ["at0073"] = <
+                    text = <"Name">
+                    description = <"Staff name">
+                >
+                ["at0074"] = <
+                    text = <"Certification">
+                    description = <"Certification status">
+                >
+                ["at0074.1"] = <
+                    text = <"ARRT Certified">
+                    description = <"ARRT certified">
+                >
+                ["at0074.2"] = <
+                    text = <"State Licensed">
+                    description = <"State licensed">
+                >
+                ["at0074.3"] = <
+                    text = <"Board Certified">
+                    description = <"Board certified">
+                >
+                ["at0074.4"] = <
+                    text = <"In Training">
+                    description = <"In training">
+                >
+                ["at0074.5"] = <
+                    text = <"Other">
+                    description = <"Other certification">
+                >
+                ["at0075"] = <
+                    text = <"Certification Number">
+                    description = <"Certification number">
+                >
+                ["at0076"] = <
+                    text = <"License Expiry">
+                    description = <"License expiration date">
+                >
+                ["at0077"] = <
+                    text = <"Specialties">
+                    description = <"Staff specialties">
+                >
+                ["at0078"] = <
+                    text = <"Shift Assignment">
+                    description = <"Shift assignment">
+                >
+                ["at0078.1"] = <
+                    text = <"Day Shift">
+                    description = <"Day shift assignment">
+                >
+                ["at0078.2"] = <
+                    text = <"Evening Shift">
+                    description = <"Evening shift assignment">
+                >
+                ["at0078.3"] = <
+                    text = <"Night Shift">
+                    description = <"Night shift assignment">
+                >
+                ["at0078.4"] = <
+                    text = <"On Call">
+                    description = <"On call assignment">
+                >
+                ["at0078.5"] = <
+                    text = <"Rotating">
+                    description = <"Rotating shift assignment">
+                >
+                ["at0080"] = <
+                    text = <"Daily Operations Log">
+                    description = <"Daily operational metrics">
+                >
+                ["at0081"] = <
+                    text = <"Total Studies Performed">
+                    description = <"Total number of studies performed">
+                >
+                ["at0082"] = <
+                    text = <"Equipment Utilization Rate">
+                    description = <"Equipment utilization percentage">
+                >
+                ["at0083"] = <
+                    text = <"Average Study Duration">
+                    description = <"Average time per study">
+                >
+                ["at0084"] = <
+                    text = <"Patient Wait Time">
+                    description = <"Average patient wait time">
+                >
+                ["at0085"] = <
+                    text = <"Emergency Studies">
+                    description = <"Number of emergency studies">
+                >
+                ["at0086"] = <
+                    text = <"Repeat Studies">
+                    description = <"Number of repeated studies">
+                >
+                ["at0087"] = <
+                    text = <"Repeat Rate">
+                    description = <"Percentage of repeated studies">
+                >
+                ["at0088"] = <
+                    text = <"Operational Issues">
+                    description = <"Operational issues encountered">
+                >
+                ["at0090"] = <
+                    text = <"Incident Reports">
+                    description = <"Incident reporting and tracking">
+                >
+                ["at0091"] = <
+                    text = <"Incident Record">
+                    description = <"Details of incident">
+                >
+                ["at0092"] = <
+                    text = <"Incident ID">
+                    description = <"Unique incident identifier">
+                >
+                ["at0093"] = <
+                    text = <"Incident Date/Time">
+                    description = <"Date and time of incident">
+                >
+                ["at0094"] = <
+                    text = <"Incident Type">
+                    description = <"Type of incident">
+                >
+                ["at0094.1"] = <
+                    text = <"Equipment Malfunction">
+                    description = <"Equipment malfunction incident">
+                >
+                ["at0094.2"] = <
+                    text = <"Patient Incident">
+                    description = <"Patient-related incident">
+                >
+                ["at0094.3"] = <
+                    text = <"Staff Injury">
+                    description = <"Staff injury incident">
+                >
+                ["at0094.4"] = <
+                    text = <"Radiation Exposure">
+                    description = <"Radiation exposure incident">
+                >
+                ["at0094.5"] = <
+                    text = <"Quality Issue">
+                    description = <"Quality-related incident">
+                >
+                ["at0094.6"] = <
+                    text = <"Other">
+                    description = <"Other type of incident">
+                >
+                ["at0095"] = <
+                    text = <"Severity">
+                    description = <"Incident severity level">
+                >
+                ["at0095.1"] = <
+                    text = <"Low">
+                    description = <"Low severity">
+                >
+                ["at0095.2"] = <
+                    text = <"Medium">
+                    description = <"Medium severity">
+                >
+                ["at0095.3"] = <
+                    text = <"High">
+                    description = <"High severity">
+                >
+                ["at0095.4"] = <
+                    text = <"Critical">
+                    description = <"Critical severity">
+                >
+                ["at0096"] = <
+                    text = <"Description">
+                    description = <"Detailed description of incident">
+                >
+                ["at0097"] = <
+                    text = <"Immediate Actions">
+                    description = <"Immediate actions taken">
+                >
+                ["at0098"] = <
+                    text = <"Follow-up Required">
+                    description = <"Whether follow-up is required">
+                >
+                ["at0098.1"] = <
+                    text = <"Yes">
+                    description = <"Follow-up required">
+                >
+                ["at0098.2"] = <
+                    text = <"No">
+                    description = <"No follow-up required">
+                >
+                ["at0098.3"] = <
+                    text = <"Under Review">
+                    description = <"Follow-up under review">
+                >
+                ["at0099"] = <
+                    text = <"Reported To">
+                    description = <"Who incident was reported to">
+                >
+            >
+        >
+    >
